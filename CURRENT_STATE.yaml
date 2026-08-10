@@ -1,0 +1,32 @@
+schema_version: 1
+workspace:
+  name: SAGA-Research-Foundry
+  role: persistent_rnd_workspace
+  status: pre_canonical
+
+production:
+  repository: dyegorodrigues/SAGA
+  active_development_branch: codex/integrar-bloco-f0
+  active_pr: 29
+  protected_main_reference: 68fad4c575e28959b2ca4776e9a541d6828b63f3
+
+last_verified_snapshot:
+  date: "2026-08-10"
+  timezone: "America/Sao_Paulo"
+  production_head_observed: "722a0c89155f183d380ca5c2d3239f1a423238d4"
+  warning: >
+    This snapshot is volatile. Re-read SAGA/AI_Studio_Lab/codex/RETOMADA.md,
+    PR #29, current HEAD and CI before any implementation decision.
+
+legacy_archive:
+  repository: dyegorodrigues/SAGA
+  branch: archive/thinking-engine-rd-2026-08-10
+  purpose: temporary safety archive to be migrated, then removable only after verification
+
+epistemic_precedence:
+  - production_repo_code_and_gates
+  - production_canonical_pedagogy
+  - foundry_decision_ledger
+  - foundry_reconciled_specs
+  - research_and_external_reviews
+  - historical_prototypes
