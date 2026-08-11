@@ -3,6 +3,8 @@ workspace:
   name: SAGA-Research-Foundry
   role: persistent_rnd_workspace
   status: pre_canonical
+  revision: v0.98
+  detail_reconciliation: complete
 
 production:
   repository: dyegorodrigues/SAGA
@@ -16,6 +18,19 @@ last_verified_snapshot:
   date: "2026-08-10"
   timezone: "America/Sao_Paulo"
   production_head_observed: "2e48bb985e2e896e4d61834075fcb7de16696ecf"
+  pr_state: open
+  pr_draft: true
+  pr_merged: false
+  ci:
+    workflow: CI
+    run_number: 1058
+    run_id: 31444601708
+    conclusion: success
+    jobs:
+      - Gates do SAGA
+      - Guarda de binários
+      - Sonda real Sensei
+      - Higiene do diff
   coverage:
     composer: 30
     legacy: 22
@@ -31,11 +46,24 @@ last_verified_snapshot:
     PR #29, current HEAD, current CI and the live Coverage Matrix before any
     implementation decision.
 
+foundry_audit:
+  date: "2026-08-10"
+  scope: mega_review_after_publication
+  result: complete_with_documentation_gap_corrected
+  correction:
+    file: 02_pedagogy/thinking_engine/RECONCILED_DETAIL_REGISTER_V0_98.md
+    purpose: preserve fine-grained pedagogical, exercise, architecture, evidence, QA and transfer details
+  originals_archive_verified: true
+  integrity_manifest_required: true
+
 legacy_archive:
   repository: dyegorodrigues/SAGA
-  branch: archive/thinking-engine-rd-2026-08-10
-  migration_status: foundry_published_pending_final_cleanup
-  purpose: temporary safety archive retained until Foundry verification is complete
+  former_branch: archive/thinking-engine-rd-2026-08-10
+  migration_status: completed
+  branch_present_on_final_audit: false
+  verification_queries:
+    - archive/thinking-engine-rd-2026-08-10
+    - thinking-engine
 
 epistemic_precedence:
   - production_repo_code_and_gates
