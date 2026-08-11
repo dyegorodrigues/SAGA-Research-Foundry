@@ -11,19 +11,21 @@ production:
   active_development_branch: codex/integrar-bloco-f0
   active_pr: 29
   protected_main_reference: 68fad4c575e28959b2ca4776e9a541d6828b63f3
-  current_wave_status: W5_GM_05_closed_reconciliation_post_W5_pre_W6_closed
-  next_wave: W6_not_selected
+  current_wave_status: W5_closed_post_W5_reconciliation_closed_W6_selected
+  next_wave: W6_N2_03_F29
+  w6_selection_status: selected_not_implemented
+  w6_selection_checkpoint: AI_Studio_Lab/codex/CHECKPOINT_SELECAO_W6_N2_03_F29_2026-08-11.md
   implementation_authorized: false
 
-last_verified_snapshot:
+last_verified_runtime_snapshot:
   date: "2026-08-11"
   timezone: "America/Sao_Paulo"
-  production_head_observed: "12981f0042d658f5cd6004189de7d8aee5eaaaf7"
+  production_head: "12981f0042d658f5cd6004189de7d8aee5eaaaf7"
   pr_state: open
   pr_draft: true
   pr_merged: false
   pr_review_threads_open: 0
-  canonical_receipt_location: "SAGA PR #29 body — RECIBO CANÔNICO"
+  canonical_receipt_location: "SAGA PR #29 body — ESTADO CANÔNICO DE RETOMADA"
   ci:
     workflow: CI
     run_number: 1073
@@ -52,19 +54,75 @@ last_verified_snapshot:
     premieres: 44
   primitive_blockers:
     - Moedas
-  controlled_debt:
-    gold_onboarding_baseline:
-      - N1.07
-      - N1.09
-      - N3.10
-      - N4.03
-      - N4.06
-    bundle_js_status: heavy_non_curricular_debt
-  warning: >
-    This snapshot is a verified closure receipt, not permission to skip re-anchoring.
-    Before any implementation decision, re-read SAGA PR #29, current HEAD, its
-    associated CI/jobs/review threads, SAGA/AI_Studio_Lab/codex/RETOMADA.md and
-    the live Coverage Matrix + DAG. If the remote differs, the remote wins.
+
+selection_document_snapshot:
+  date: "2026-08-11"
+  head: "00a2eebc7c5cb603cf1be51b52adbcf0a5580129"
+  base_runtime_head: "12981f0042d658f5cd6004189de7d8aee5eaaaf7"
+  commits_ahead_of_runtime_head: 2
+  changed_files_since_runtime_head:
+    - AI_Studio_Lab/codex/CHECKPOINT_SELECAO_W6_N2_03_F29_2026-08-11.md
+  runtime_files_changed: false
+  curriculum_executable_changed: false
+  tests_changed: false
+  workflow_changed: false
+  ci:
+    workflow: CI
+    run_number: 1075
+    run_id: 31509113460
+    status_at_snapshot: running_or_queued
+    completed_success_jobs_at_snapshot:
+      - Gates do SAGA
+      - Guarda de binários
+      - Sonda real Sensei
+      - Higiene do diff
+    remaining_at_snapshot:
+      - Sonda transversal — 390px × 8 sementes
+      - Sonda transversal — 320/900px × 1 semente
+  note: >
+    This head is a documentation-only selection checkpoint layered on the fully
+    verified runtime head. Do not treat documentation commits as new runtime
+    behavior. Re-anchor CI at the start of the next session; if run 1075 has
+    completed, use its real conclusion rather than this temporal snapshot.
+
+w6_selection:
+  competence: N2.03
+  ficha: F29
+  name: Maior, Menor, Igual
+  implementation_started: false
+  downstream_descendants: 38
+  reason_summary: >
+    High causal leverage plus a real ficha-to-screen divergence. F29 requires
+    quantity -> comparison -> symbol, while the legacy L1-L2 compares numerals
+    directly. Selection remains conditional on regression-first proving a local
+    specialized integration radius.
+  architecture_preference:
+    - specialized F29 contract/procedure
+    - specialized F29 stage composing Grupo for concrete levels
+    - specialized builder through the existing canary gate
+    - register inactive before activation
+    - do not create a generic groups dispatch by convenience
+  internal_precedent:
+    competence: N1.05
+    contract: src/curriculum/procedimentos/comparacaoQuantidadeContract.ts
+    pattern: specialized Grupo-backed builder through composerCanary
+  invalidation_condition: >
+    Re-open Matrix+DAG selection if correct F29 implementation requires a generic
+    groups dispatch affecting multiple fichas, incompatible Grupo public-contract
+    changes, a global renderer rule, or learner-state/prerequisite changes.
+  conservative_fallback_candidate: N3.04/F31
+
+controlled_debt:
+  gold_onboarding_baseline:
+    - N1.07
+    - N1.09
+    - N3.10
+    - N4.03
+    - N4.06
+  product_maintenance_issue: 34
+  product_maintenance_issue_title: Backlog P2 pós-W5 — manutenção não curricular
+  bundle_js_status: heavy_non_curricular_debt
+  rule: do_not_mix_P2_maintenance_into_W6
 
 foundry_audit:
   date: "2026-08-11"
@@ -99,3 +157,17 @@ epistemic_precedence:
   - foundry_reconciled_specs
   - research_and_external_reviews
   - historical_prototypes
+
+next_session_contract:
+  reanchor_first: true
+  read_order:
+    - SAGA PR #29 state/head/CI/jobs/review threads
+    - AI_Studio_Lab/codex/CHECKPOINT_SELECAO_W6_N2_03_F29_2026-08-11.md
+    - AI_Studio_Lab/codex/CHECKPOINT_RECONCILIACAO_POS_W5_PRE_W6_2026-08-11.md
+    - AI_Studio_Lab/codex/RETOMADA.md
+    - F29 canonical ficha
+    - AI_Studio_Lab/tools/ficha_runtime_map.cjs
+    - src/components/primitives/Grupo.tsx
+    - src/curriculum/procedimentos/comparacaoQuantidadeContract.ts
+    - live Coverage Matrix and curriculum/grafo_saga.yaml
+  first_engineering_action_if_remote_agrees: regression_first_for_N2_03_F29
