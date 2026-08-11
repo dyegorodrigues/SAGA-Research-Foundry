@@ -8,6 +8,7 @@
 - `02_pedagogy/thinking_engine/PRACTICE_MAP.md`
 - `02_pedagogy/thinking_engine/PRE_CANON_V0_97.md`
 - `02_pedagogy/thinking_engine/PROGRESSION_4_12.md`
+- `02_pedagogy/thinking_engine/RECONCILED_DETAIL_REGISTER_V0_98.md`
 - `03_architecture/ARCHITECTURE_MINIMUM.md`
 - `03_architecture/FALSIFICATION_GATES.md`
 - `03_architecture/THINKING_EVIDENCE.md`
