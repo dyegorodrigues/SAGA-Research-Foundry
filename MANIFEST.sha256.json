@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-10T20:30:00-03:00",
+  "generated_at": "2026-08-10T21:13:00-03:00",
   "files": {
     ".gitignore": "3645d7d465aa537775312dc6447b0970d3502bf94ba032bff087e0b0b1b8e840",
     "00_governance/REPOSITORY_BOUNDARIES.md": "2c883b197954a0b89b90f24f000b2af6f4f408c05bf1d41fdb0f8e662e1c15f6",
@@ -10,6 +10,7 @@
     "02_pedagogy/thinking_engine/PRACTICE_MAP.md": "9170036cb963b007c54843504c98962ba9914d9462909dae02d4d1ed8a76dff3",
     "02_pedagogy/thinking_engine/PRE_CANON_V0_97.md": "414391cc26e0e10569b3a9e606df7c4912007f0721283c814fa168ef254c9541",
     "02_pedagogy/thinking_engine/PROGRESSION_4_12.md": "33357bb6a10fe269699eff4150f5c4912fd47446dda3173f83cf645d74d41fb2",
+    "02_pedagogy/thinking_engine/RECONCILED_DETAIL_REGISTER_V0_98.md": "cd17452858063277d881a2bdc8559390ddc38224186299ff69c6611706c2cc87",
     "03_architecture/ARCHITECTURE_MINIMUM.md": "afcc3327b2354b2c36ab8ced80b66d53b07c56b66114c1c7d50638646f2076e1",
     "03_architecture/FALSIFICATION_GATES.md": "b25bb0a803cbff9a824786aa079fb3f46607fbc77e0f3dfbcd1894c2aff16a22",
     "03_architecture/THINKING_EVIDENCE.md": "3a3b51248d16b53e8af4985c33e07e6342b50ab478e0d28c4000ce657c84fdd4",
@@ -17,7 +18,7 @@
     "04_curriculum_design/MECHANICS.md": "0088391e77a6e3da2218c4705b9b538964106856dc24d10c1d4227c3f954a506",
     "04_curriculum_design/SAMPLE_EXPERIENCES.md": "0aee45c7d9428f7ac488c010e3a7bc7e579ff4b84c5be8de4f57a1c1c6193d9b",
     "04_curriculum_design/TRANSFER_AND_BRIDGES.md": "c3466614e38fb7d1529eb060924e25eff9e8a7804f2824dd313f3963aa5b03f2",
-    "05_decisions/DECISION_LEDGER.md": "c4ae393a97d8421f24f37b6cbc5cc5ca8aff37fa53a07d5b2bbd2e9479e97867",
+    "05_decisions/DECISION_LEDGER.md": "0ae746dc57034c1f30ef32657feae4ae9a18aa8799a6b11b0f789c398c873ac7",
     "06_research/evidence/EVIDENCE_LEDGER.md": "84d9b84acf90316deb52693d5d40c7313a3e89f9ad71f803f35cabb7f1d1da0c",
     "06_research/external_reviews/ORIGINALS_2026-08-10.zip.base64.part01": "56e599ecd6857f505ad8f94c3d771b28e2fa5d42adb8b0c2b43037201b5952dd",
     "06_research/external_reviews/ORIGINALS_2026-08-10.zip.base64.part02": "3e694cb404effda6ccb98ea8b3354728c7e1aa586de12daaf886e6c68a95b6e4",
@@ -30,17 +31,17 @@
     "06_research/external_reviews/README.md": "240aa26af14316f6ac4c66809b842e487e2d9838b8185c03239f754d56189f1c",
     "07_handoffs/HANDOFF_TEMPLATE.md": "9b941bf1a2a6cc3bc53f2bfa504dac33bccca2ca52d6723119b70a8aa1b09ed5",
     "07_handoffs/PROMPT_MINIMO_NOVA_IA.md": "380f6af46279a02b76049fe5d3d68de96283aeff875832219fd476b9d2b1bb30",
-    "07_handoffs/SESSION_LOG.md": "422ecfd9c25f84cc4ff3f77b35d40bb1b717b80668bdc39b18f2dea64bbf3ee9",
+    "07_handoffs/SESSION_LOG.md": "b7c85eaf75c538bd592c22e34b71b0954319073475458123d4ba744cc5870f4a",
     "08_backlog/EXPERIMENTS.md": "ac204993008818bcfb36f33ab3bb664675be5d1989440bba4bca3d1d2713e9d8",
     "08_backlog/OPEN_QUESTIONS.md": "e147620d4c5e8a4bd326e8d9334a2afa84c689706b6e15e75831fc155ec3b344",
     "09_integration/FUTURE_PROOFING.md": "f3ad94253c6a2e4193a960f32d61bd93899aedb574d5b1cfabad4ef8225d1a3a",
-    "09_integration/MIGRATION_FROM_TEMP_ARCHIVE.md": "0907baba46d4ee5270dae02ea012ab21588a008beeb965a215af431f1e6fa287",
+    "09_integration/MIGRATION_FROM_TEMP_ARCHIVE.md": "0a3b47db5e580aad19c914f67acefcdf498aa0feb0f930e4048ec63b001074e1",
     "99_archive/README.md": "6b098a9fc3332313bfbefacae90d0cd51b9035982261bf29930511e9d020b187",
     "AGENTS.md": "bedb9864fa46b4b69fbd281830c12e2e9b1295657ac1088f2de3a1b46ec1d543",
-    "CURRENT_STATE.yaml": "5cc61cee0faf24afc48efd08f3d10d8baa47b0b1343185cc513703d6b3d0d859",
-    "FILE_TREE.md": "d149e2e72520dc737c581500a74ac08047e365dfe3fb193373ae040d97041686",
+    "CURRENT_STATE.yaml": "6e3e4e9d64f87d62b6bd4a8cec1b44a0bc70a5311559b0d436491fcc979ee44f",
+    "FILE_TREE.md": "ba0b40147bef4414f199ac2e0733bffe958bf96ddea0d98a75d79ead31f5be7b",
     "README.md": "eb19f881ebc023e866abc821b6cdeed7a49e25c8a3b524462283eb52dc63f92b",
-    "START_HERE_NEW_AI.md": "482c1f3034f20c5daae795b5a50baef6aca7f7df6901f8d68dca360ee1e315ba",
+    "START_HERE_NEW_AI.md": "870a0eeab67785c926d50e27779cc874b267847a5812e518ef1d26fff3511950",
     "tools/verify_integrity.py": "4c3cf75e5b9a3ac95c16eba0cc57a68e2dbeaa028c37488600e57d79656567f7"
   }
 }
