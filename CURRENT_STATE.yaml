@@ -9,19 +9,33 @@ production:
   active_development_branch: codex/integrar-bloco-f0
   active_pr: 29
   protected_main_reference: 68fad4c575e28959b2ca4776e9a541d6828b63f3
+  current_wave_status: W5_GM_05_closed
+  next_wave: W6_not_selected
 
 last_verified_snapshot:
   date: "2026-08-10"
   timezone: "America/Sao_Paulo"
-  production_head_observed: "722a0c89155f183d380ca5c2d3239f1a423238d4"
+  production_head_observed: "2e48bb985e2e896e4d61834075fcb7de16696ecf"
+  coverage:
+    composer: 30
+    legacy: 22
+    fallback: 38
+    served: 52
+    divergences: 17
+    swaps: 12
+    premieres: 44
+  primitive_blockers:
+    - Moedas
   warning: >
     This snapshot is volatile. Re-read SAGA/AI_Studio_Lab/codex/RETOMADA.md,
-    PR #29, current HEAD and CI before any implementation decision.
+    PR #29, current HEAD, current CI and the live Coverage Matrix before any
+    implementation decision.
 
 legacy_archive:
   repository: dyegorodrigues/SAGA
   branch: archive/thinking-engine-rd-2026-08-10
-  purpose: temporary safety archive to be migrated, then removable only after verification
+  migration_status: foundry_published_pending_final_cleanup
+  purpose: temporary safety archive retained until Foundry verification is complete
 
 epistemic_precedence:
   - production_repo_code_and_gates
