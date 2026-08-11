@@ -4,7 +4,7 @@
 
 ## Motivo
 
-A auditoria de 11/08 executou `python3 tools/verify_integrity.py` e registrou divergência de SHA-256 em:
+A auditoria de 11/08 executou o verificador histórico `python3 tools/verify_integrity.py` e registrou divergência de SHA-256 em:
 
 - `ORIGINALS_2026-08-10.zip.base64.part05`;
 - `ORIGINALS_2026-08-10.zip.base64.part08`.
@@ -36,7 +36,19 @@ Disponibilidade individual dos arquivos não prova que:
 - metadados/compressão/ordem do ZIP original foram preservados;
 - as partes Base64 atuais são byte-a-byte idênticas ao transporte original.
 
-Por isso o status correto do pacote continua sendo **UNVERIFIED** até `tools/verify_integrity.py` passar contra a referência intencional.
+Por isso o status correto do pacote continua sendo **UNVERIFIED** até o verificador dedicado passar contra a referência intencional.
+
+## Mecanismo vigente de integridade
+
+O manifesto histórico `MANIFEST.sha256.json` é um **snapshot do repositório em 10/08** e inclui documentos mutáveis. Ele não deve virar um bloqueio que trate toda edição legítima de documentação como corrupção dos originais.
+
+Para o problema crítico deste pacote, a autoridade mecânica passou a ser:
+
+- `ORIGINALS_MANIFEST.sha256.json` — hashes esperados das 8 partes, SHA-256 lógico do ZIP e os 10 membros esperados;
+- `tools/verify_originals_integrity.py` — verifica hashes das partes, validade Base64, SHA do ZIP reconstruído, integridade ZIP/CRC e lista de membros;
+- `.github/workflows/integrity.yml` — executa o verificador dedicado automaticamente.
+
+Os hashes esperados de `part05` e `part08` **não foram atualizados para acomodar o conteúdo danificado**. O mecanismo deve continuar vermelho até recuperação real.
 
 ## Regra epistemológica
 
@@ -49,6 +61,6 @@ Os `.ts` recuperados continuam sendo **protótipos/spec drafts**. Em particular:
 ## Próximo fechamento
 
 1. localizar/reconstruir o ZIP original ou substituir o mecanismo de transporte por preservação individual com hashes verificáveis;
-2. executar `tools/verify_integrity.py`;
+2. executar `python3 tools/verify_originals_integrity.py`;
 3. somente após saída verde voltar a declarar `originals_archive_verified: true`;
 4. manter CI automático para impedir nova falsa atestação.
