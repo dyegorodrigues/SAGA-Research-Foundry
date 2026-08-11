@@ -8,8 +8,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  verify-integrity:
-    name: Verify integrity manifest
+  verify-originals:
+    name: Verify external originals
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -18,5 +18,5 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Verify tracked hashes
-        run: python3 tools/verify_integrity.py
+      - name: Verify Base64 parts, reconstructed ZIP and expected members
+        run: python3 tools/verify_originals_integrity.py
