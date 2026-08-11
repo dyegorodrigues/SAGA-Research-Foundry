@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "archive": "ORIGINALS_2026-08-10.zip",
+  "archive_sha256": "01120172a2d7692e93fc932a3bc3c8c5f88277884af3615d2381c358eb25b2a0",
+  "parts": {
+    "ORIGINALS_2026-08-10.zip.base64.part01": "56e599ecd6857f505ad8f94c3d771b28e2fa5d42adb8b0c2b43037201b5952dd",
+    "ORIGINALS_2026-08-10.zip.base64.part02": "3e694cb404effda6ccb98ea8b3354728c7e1aa586de12daaf886e6c68a95b6e4",
+    "ORIGINALS_2026-08-10.zip.base64.part03": "b4b25b727b0ea824bde67fd04c295eaa7dd4b4bc2aa8438209d5339e684a8750",
+    "ORIGINALS_2026-08-10.zip.base64.part04": "4cce640f3fe2353537416799dfe88cbc5328a428d2d325284c2ffe3fd16dc940",
+    "ORIGINALS_2026-08-10.zip.base64.part05": "f40ccf1b51396af9b72609d17b029eb246ca4068f306891445a95792a8b324d2",
+    "ORIGINALS_2026-08-10.zip.base64.part06": "9e0528eec7fea147233f826ff50f1958e26894ec2da8e6181c0bc7fc42601924",
+    "ORIGINALS_2026-08-10.zip.base64.part07": "1cc7aa4e4b11e5146cfaa1416a8ec49dc75ffebf57aef87878761b4216aa5290",
+    "ORIGINALS_2026-08-10.zip.base64.part08": "d21118a2bcf21522acd28a5cca3b57716198f6a30f6cbcf90073515e24500190"
+  },
+  "expected_files": [
+    "AUDITORIA_ADVERSARIAL_THINKING_ENGINE_PRE_CANONE_v09.md",
+    "CP_TEMPLATE_THINKING.md",
+    "CP_TEMPLATE_THINKING_REPO (1).md",
+    "DOSSE_SAGA_THINKING_ENGINE_INTEGRADO.md",
+    "DOSSIE_COMPLETO_THINKING_ENGINE_SAGA_2026-08-10.md",
+    "SAGA_THINKING_ENGINE_PLANO_EXPANSAO_v096.md",
+    "SAGA_THINKING_v096_VALIDADO_REPO (1).md",
+    "audit-thinking-reuse (1).ts",
+    "thinking-extensions (1).ts",
+    "thinking-integration.test (1).ts"
+  ]
+}
