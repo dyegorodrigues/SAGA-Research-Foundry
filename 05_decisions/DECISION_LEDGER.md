@@ -1,4 +1,4 @@
-# Decision Ledger — v0.97
+# Decision Ledger — v0.98
 
 | ID | Decisão | Status |
 |---|---|---|
@@ -57,3 +57,4 @@
 | D053 | Idade como gate rígido | REJECT |
 | D054 | Foundry como memória persistente de P&D | KEEP |
 | D055 | Produção e P&D em repositórios separados | KEEP |
+| D056 | Registro Reconciliado de Detalhe v0.98 preserva microdecisões/insights sem promover runtime | KEEP |
