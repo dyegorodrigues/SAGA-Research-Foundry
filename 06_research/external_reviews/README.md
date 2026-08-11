@@ -1,13 +1,20 @@
 # External Reviews / Originals
 
-Os materiais externos e protótipos recebidos nesta rodada foram preservados **byte a byte** em:
+Os materiais externos e protótipos recebidos nesta rodada foram preservados **byte a byte** em 8 partes Base64:
 
-`ORIGINALS_2026-08-10.zip.base64`
+- `ORIGINALS_2026-08-10.zip.base64.part01`
+- `ORIGINALS_2026-08-10.zip.base64.part02`
+- `ORIGINALS_2026-08-10.zip.base64.part03`
+- `ORIGINALS_2026-08-10.zip.base64.part04`
+- `ORIGINALS_2026-08-10.zip.base64.part05`
+- `ORIGINALS_2026-08-10.zip.base64.part06`
+- `ORIGINALS_2026-08-10.zip.base64.part07`
+- `ORIGINALS_2026-08-10.zip.base64.part08`
 
 ## Integridade
 
 - formato lógico: ZIP
-- transporte no GitHub: Base64 UTF-8
+- transporte no GitHub: Base64 UTF-8 dividido em partes
 - SHA-256 do ZIP reconstruído: `01120172a2d7692e93fc932a3bc3c8c5f88277884af3615d2381c358eb25b2a0`
 - arquivos preservados: 10
 
@@ -26,6 +33,7 @@ Os materiais externos e protótipos recebidos nesta rodada foram preservados **b
 ## Como reconstruir
 
 ```bash
+cat ORIGINALS_2026-08-10.zip.base64.part* > ORIGINALS_2026-08-10.zip.base64
 base64 -d ORIGINALS_2026-08-10.zip.base64 > ORIGINALS_2026-08-10.zip
 sha256sum ORIGINALS_2026-08-10.zip
 unzip ORIGINALS_2026-08-10.zip
