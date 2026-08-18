@@ -18,7 +18,7 @@
     "04_curriculum_design/MECHANICS.md": "0088391e77a6e3da2218c4705b9b538964106856dc24d10c1d4227c3f954a506",
     "04_curriculum_design/SAMPLE_EXPERIENCES.md": "0aee45c7d9428f7ac488c010e3a7bc7e579ff4b84c5be8de4f57a1c1c6193d9b",
     "04_curriculum_design/TRANSFER_AND_BRIDGES.md": "c3466614e38fb7d1529eb060924e25eff9e8a7804f2824dd313f3963aa5b03f2",
-    "05_decisions/DECISION_LEDGER.md": "0ae746dc57034c1f30ef32657feae4ae9a18aa8799a6b11b0f789c398c873ac7",
+    "05_decisions/DECISION_LEDGER.md": "54e53077c44f49827b529451e007bcae87e314cbe582bcb72c8cff0c04402688",
     "06_research/evidence/EVIDENCE_LEDGER.md": "84d9b84acf90316deb52693d5d40c7313a3e89f9ad71f803f35cabb7f1d1da0c",
     "06_research/external_reviews/ORIGINALS_2026-08-10.zip.base64.part01": "56e599ecd6857f505ad8f94c3d771b28e2fa5d42adb8b0c2b43037201b5952dd",
     "06_research/external_reviews/ORIGINALS_2026-08-10.zip.base64.part02": "3e694cb404effda6ccb98ea8b3354728c7e1aa586de12daaf886e6c68a95b6e4",
@@ -31,17 +31,18 @@
     "06_research/external_reviews/README.md": "240aa26af14316f6ac4c66809b842e487e2d9838b8185c03239f754d56189f1c",
     "07_handoffs/HANDOFF_TEMPLATE.md": "9b941bf1a2a6cc3bc53f2bfa504dac33bccca2ca52d6723119b70a8aa1b09ed5",
     "07_handoffs/PROMPT_MINIMO_NOVA_IA.md": "380f6af46279a02b76049fe5d3d68de96283aeff875832219fd476b9d2b1bb30",
-    "07_handoffs/SESSION_LOG.md": "b7c85eaf75c538bd592c22e34b71b0954319073475458123d4ba744cc5870f4a",
-    "08_backlog/EXPERIMENTS.md": "ac204993008818bcfb36f33ab3bb664675be5d1989440bba4bca3d1d2713e9d8",
-    "08_backlog/OPEN_QUESTIONS.md": "e147620d4c5e8a4bd326e8d9334a2afa84c689706b6e15e75831fc155ec3b344",
+    "07_handoffs/SESSION_LOG.md": "cca659085cd8fcb0f937fee4639f7738e36898702d50d5e31f3232d6997be65a",
+    "08_backlog/EXPERIMENTS.md": "9447e20a03827451c7bb54b1508ed6dda7f642ceab875bf2b50100c5f68aeaaa",
+    "08_backlog/OPEN_QUESTIONS.md": "ce96e47b6a6f63d92f58bca3aab0e78c5c1ec3f790e24a2d7995bbb8089830e6",
     "09_integration/FUTURE_PROOFING.md": "f3ad94253c6a2e4193a960f32d61bd93899aedb574d5b1cfabad4ef8225d1a3a",
     "09_integration/MIGRATION_FROM_TEMP_ARCHIVE.md": "0a3b47db5e580aad19c914f67acefcdf498aa0feb0f930e4048ec63b001074e1",
     "99_archive/README.md": "6b098a9fc3332313bfbefacae90d0cd51b9035982261bf29930511e9d020b187",
     "AGENTS.md": "bedb9864fa46b4b69fbd281830c12e2e9b1295657ac1088f2de3a1b46ec1d543",
-    "CURRENT_STATE.yaml": "6e3e4e9d64f87d62b6bd4a8cec1b44a0bc70a5311559b0d436491fcc979ee44f",
-    "FILE_TREE.md": "ba0b40147bef4414f199ac2e0733bffe958bf96ddea0d98a75d79ead31f5be7b",
+    "CURRENT_STATE.yaml": "865a2cc14157b17969bf0e8a083b1cac462c9af516c6b216376c6b344bdef4cd",
+    "FILE_TREE.md": "2a6502468667431ac3a616f1979420f041d6896e5a1e6aaa7ea141aaed9aae20",
     "README.md": "e3c97d63dc8418b953345140b12fd9821b70da66d0551f1ed22cf0a84cd283d0",
     "START_HERE_NEW_AI.md": "870a0eeab67785c926d50e27779cc874b267847a5812e518ef1d26fff3511950",
-    "tools/verify_integrity.py": "4c3cf75e5b9a3ac95c16eba0cc57a68e2dbeaa028c37488600e57d79656567f7"
+    "tools/verify_integrity.py": "4c3cf75e5b9a3ac95c16eba0cc57a68e2dbeaa028c37488600e57d79656567f7",
+    "03_architecture/OBSERVATORIO_E_AUDITORIA.md": "fa134a20f6daeb67c59c1636dc335b4afd798db260236801ff6c3b5d86317e6f"
   }
 }

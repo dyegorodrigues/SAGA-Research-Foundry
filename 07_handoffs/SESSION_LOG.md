@@ -18,3 +18,24 @@
 - CI reancorado: workflow `CI` run #1058 / `31444601708` = `success`; quatro jobs verificadas com sucesso.
 - A branch temporária `archive/thinking-engine-rd-2026-08-10` não foi encontrada em duas buscas independentes no repositório SAGA; migração marcada como concluída.
 - A Foundry continua pré-canônica: documentação e pesquisa não promovem runtime automaticamente.
+
+## 2026-08-18 — Frente Observatório e reancoragem de estado
+- Reancoragem do SAGA produtivo por `git fetch` da branch remota: HEAD `22433a3`, 18/08/2026 00:35 -03.
+- Achado material: `CURRENT_STATE.yaml` estava obsoleto em **40 ondas** — declarava PR #29 / W6 enquanto a linha viva está em PR #35 com W1–W46 fechadas e W47 em regression-first validado.
+- Bloco `production` corrigido. Blocos `last_verified_runtime_snapshot`, `selection_document_snapshot`, `w6_selection` e a `read_order` de `next_session_contract` marcados como `superseded` em vez de apagados ou reescritos com dados não verificados.
+- Registrado que a porta operacional viva do SAGA passou a ser `PROMPT_DE_RETOMADA.md`, com `ESTADO_DO_FECHAMENTO.md` como índice e `RETOMADA.md` reduzido a ponte atemporal. A Foundry não sabia disso.
+- Matrix real observada nos documentos vivos: `71 Composer / 15 legado / 4 fallback / 86 servidas / 11 divergências`. Fallbacks restantes: `GM.11, N5.05, N6.02, PE.04`.
+- Consequência estratégica registrada: a fábrica curricular termina sozinha em poucas ondas. O risco deixou de ser "a fábrica consome o projeto" e passou a ser "o vazio pós-fechamento ser ocupado por outra fila interna antes de qualquer observação de criança real".
+- Nova frente registrada: `03_architecture/OBSERVATORIO_E_AUDITORIA.md` — Recibo de Sessão, avaliação fora do motor, sete auditorias de sistema, personas sintéticas, costuras de expansão.
+- Ledger avançou para v0.99 com D057–D065, cada uma reconciliada contra decisão anterior.
+- Duas propostas foram **retiradas na reconciliação**, não aceitas: gravação de áudio da justificativa (colide com D023) e portão de razão fixa 3:1 entre ondas e observatório (colide com D036). Substituídas por anotação escrita e por portão orientado a achado aberto.
+- Limites duros registrados: p-valor descritivo não autoriza engine psicométrico nem RL de prescrição (`ARCHITECTURE_MINIMUM.md`); personas sintéticas validam coerência do motor e nunca aprendizagem.
+- Naming diferido (D065) com evidência RDAP: 32 candidatos verificados em `.com` e `.com.br`, 31 ocupados.
+- Nada nesta sessão altera o SAGA produtivo. `implementation_authorized: false` permanece.
+
+### Achado colateral — manifesto de integridade obsoleto há 7 dias
+- `tools/verify_integrity.py` falha desde 11/08/2026 e ninguém observou: o verificador não está ligado a nenhum gate de CI.
+- `MANIFEST.sha256.json` foi sincronizado pela última vez em `4b89c51`, 10/08 21:26. Três documentos foram editados depois disso e nunca ressincronizados: `06_research/evidence/EVIDENCE_LEDGER.md` (`12e56da`, 11/08 09:46), `09_integration/MIGRATION_FROM_TEMP_ARCHIVE.md` (`a65e894`, 11/08 09:45) e `06_research/external_reviews/README.md` (`0254af4`, 11/08 10:52).
+- As duas divergências em `ORIGINALS_2026-08-10.zip.base64.part05/part08` são de outra natureza e provavelmente pertencem ao Issue #1 de integridade do transporte, já aberto e com `originals_archive_verified: false`.
+- Conduta adotada nesta sessão: atualizar no manifesto **somente** os sete arquivos efetivamente tocados aqui, aplicando a regra do PR #35 — *baseline nunca mascara deriva*. As cinco divergências alheias permanecem vermelhas de propósito, para serem investigadas com causa própria e não apagadas por conveniência.
+- Recomendação: decidir se `verify_integrity.py` vira gate real. Um verificador que falha há uma semana sem consequência é pior que nenhum, porque produz confiança que não existe.

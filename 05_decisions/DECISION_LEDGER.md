@@ -1,4 +1,4 @@
-# Decision Ledger — v0.98
+# Decision Ledger — v0.99
 
 | ID | Decisão | Status |
 |---|---|---|
@@ -58,3 +58,100 @@
 | D054 | Foundry como memória persistente de P&D | KEEP |
 | D055 | Produção e P&D em repositórios separados | KEEP |
 | D056 | Registro Reconciliado de Detalhe v0.98 preserva microdecisões/insights sem promover runtime | KEEP |
+| D057 | Recibo de Sessão estruturado (evento de item) | EXPERIMENT |
+| D058 | Evento de prescrição do Sensei como observabilidade pura | EXPERIMENT HIGH |
+| D059 | Avaliação de aprendizagem fora do motor adaptativo | KEEP |
+| D060 | Justificativa oral como anotação escrita do adulto | KEEP |
+| D061 | Calibração descritiva de item sem engine psicométrico | KEEP |
+| D062 | Personas sintéticas como instrumento de auditoria longitudinal | KEEP |
+| D063 | Portão de continuidade por achado aberto, não por razão fixa | EXPERIMENT |
+| D064 | Costuras de expansão sem runtime (domínio, ponte, aprendiz único) | KEEP |
+| D065 | Naming diferido; SAGA permanece codinome interno | DEFER |
+
+## Reconciliação D057–D065
+
+Frente: `03_architecture/OBSERVATORIO_E_AUDITORIA.md`. Registrada em 18/08/2026,
+com a fábrica curricular em W47 e 4 fallbacks restantes.
+
+### D057 · Recibo de Sessão
+
+Instância concreta de D007 (`receipts/perfil derivado apenas se necessário`).
+
+Necessidade demonstrada: `Progress` é fotografia de estado; nenhuma auditoria
+longitudinal é derivável de `Evidencia` ou dos contratos atuais.
+
+**Não** contradiz D008 (`telemetria bruta extensa` → REJECT MVP): schema fechado,
+dois tipos de evento, sem áudio, sem texto livre da criança, sem localização,
+pseudônimo obrigatório. Se o schema crescer por conveniência, D008 volta a valer
+e esta decisão é revogada.
+
+### D058 · Evento de prescrição
+
+Não existe hoje em nenhuma forma. Registra a decisão do orquestrador
+(escolha, razão, candidatos, estado relevante) sem alterá-la.
+
+Preserva o invariante de que o Sensei é autoridade única de prescrição
+(D041, D042) e que IA generativa não é autoridade pedagógica de runtime (D030).
+
+### D059 · Avaliação fora do motor
+
+Estende D034 (`Falsification Gate` → KEEP HIGH) para o eixo longitudinal.
+Os 12 gates de `FALSIFICATION_GATES.md` validam a ficha antes da promoção;
+D059 valida o efeito depois, na criança.
+
+Guardrails herdados: proibido score global ou composto (D031); RT não eleva
+domínio conceitual (D032); idade não é gate (D053).
+
+### D060 · Justificativa oral
+
+Correção de escopo. A proposta original previa gravação de áudio, o que colide
+com D023 (`fala bruta persistida` → REJECT DEFAULT).
+
+Vigente: o adulto anota por escrito o que a criança justificou. Nenhum áudio é
+capturado ou persistido.
+
+### D061 · Calibração de item
+
+Proporção de acerto no primeiro contato, descritiva, para achar item trivial
+(p>0,95) e item quebrado (p<0,30).
+
+Limite explícito: `ARCHITECTURE_MINIMUM.md` proíbe `psychometric engine
+precoce` e `RL de prescrição`. p-valor é leitura de dado, não modelo latente.
+Nada aqui autoriza IRT, calibração adaptativa ou prescrição aprendida.
+
+### D062 · Personas sintéticas
+
+Estende as simulações longitudinais existentes de teste de invariante para
+instrumento de medida.
+
+Limite epistêmico registrado: valida coerência do motor, nunca aprendizagem.
+Não pode ser citada como evidência de eficácia pedagógica.
+
+### D063 · Portão de continuidade
+
+A proposta original era razão fixa 3:1 entre ondas e entregas de observatório.
+**Retirada** por colidir com D036 (`percentual semanal rígido` → REJECT):
+mesma família de arbitrariedade numérica sobre cadência de trabalho.
+
+Vigente: nenhuma onda nova abre com achado de auditoria aberto de severidade
+alta. Condição verificável, no formato dos gates existentes.
+
+### D064 · Costuras de expansão
+
+Mantém D046 (`implementar Thinking agora` → REJECT), D026, D027, D028, D029 e
+o roadmap R1–R8 de `FUTURE_PROOFING.md`.
+
+Autoriza apenas anotação e neutralidade de domínio, sem consumidor em runtime.
+O contrato de ponte declarativo materializa D011 e D037 e respeita D047
+(`analogia estrutural ≠ identidade conceitual`).
+
+Gatilho de expansão: evidência de retenção e transferência em criança real,
+não calendário.
+
+### D065 · Naming
+
+Evidência: 32 candidatos verificados por RDAP em `.com` e `.com.br`;
+31 ocupados. O espaço de palavra curta pronunciável está esgotado.
+
+Pré-requisito para abrir a frente: existir criança fora de casa usando o
+produto. Até lá, `SAGA` é codinome interno sem investimento de marca.

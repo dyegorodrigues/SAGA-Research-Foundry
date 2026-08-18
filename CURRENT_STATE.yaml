@@ -3,21 +3,28 @@ workspace:
   name: SAGA-Research-Foundry
   role: persistent_rnd_workspace
   status: pre_canonical
-  revision: v0.98
+  revision: v0.99
   detail_reconciliation: complete
 
 production:
   repository: dyegorodrigues/SAGA
-  active_development_branch: codex/integrar-bloco-f0
-  active_pr: 29
-  protected_main_reference: 68fad4c575e28959b2ca4776e9a541d6828b63f3
-  current_wave_status: W5_closed_post_W5_reconciliation_closed_W6_selected
-  next_wave: W6_N2_03_F29
-  w6_selection_status: selected_not_implemented
-  w6_selection_checkpoint: AI_Studio_Lab/codex/CHECKPOINT_SELECAO_W6_N2_03_F29_2026-08-11.md
+  active_development_branch: codex/fechamento-curricular
+  active_pr: 35
+  protected_main_reference: 106dfe0d796babebe40ebc36e5a84d4a80b9a858
+  current_wave_status: W1_W46_closed_W47_regression_first_validated
+  next_wave: W47_N6_02_F76
+  operational_door: AI_Studio_Lab/codex/PROMPT_DE_RETOMADA.md
+  live_index: AI_Studio_Lab/codex/ESTADO_DO_FECHAMENTO.md
+  remaining_fallbacks: [GM.11, N5.05, N6.02, PE.04]
   implementation_authorized: false
+  note: >
+    Bloco anterior (PR #29 / W6) estava obsoleto em 40 ondas curriculares.
+    Corrigido em 18/08/2026 contra o conteudo da branch remota.
 
 last_verified_runtime_snapshot:
+  superseded: true
+  superseded_reason: snapshot de PR #29 / W5; estado vivo esta em PR #35 / W47
+  live_source: AI_Studio_Lab/codex/PROMPT_DE_RETOMADA.md
   date: "2026-08-11"
   timezone: "America/Sao_Paulo"
   production_head: "12981f0042d658f5cd6004189de7d8aee5eaaaf7"
@@ -56,6 +63,8 @@ last_verified_runtime_snapshot:
     - Moedas
 
 selection_document_snapshot:
+  superseded: true
+  superseded_reason: selecao W6; ondas W6-W46 ja fechadas
   date: "2026-08-11"
   head: "00a2eebc7c5cb603cf1be51b52adbcf0a5580129"
   base_runtime_head: "12981f0042d658f5cd6004189de7d8aee5eaaaf7"
@@ -86,6 +95,8 @@ selection_document_snapshot:
     completed, use its real conclusion rather than this temporal snapshot.
 
 w6_selection:
+  superseded: true
+  superseded_reason: W6 fechada em 11/08/2026
   competence: N2.03
   ficha: F29
   name: Maior, Menor, Igual
@@ -160,6 +171,11 @@ epistemic_precedence:
 
 next_session_contract:
   reanchor_first: true
+  read_order_superseded: true
+  read_order_superseded_reason: >
+    A lista abaixo aponta para PR #29 e W6. A porta operacional viva do SAGA e
+    AI_Studio_Lab/codex/PROMPT_DE_RETOMADA.md, com indice em
+    AI_Studio_Lab/codex/ESTADO_DO_FECHAMENTO.md. Use-os primeiro.
   read_order:
     - SAGA PR #29 state/head/CI/jobs/review threads
     - AI_Studio_Lab/codex/CHECKPOINT_SELECAO_W6_N2_03_F29_2026-08-11.md
@@ -171,3 +187,36 @@ next_session_contract:
     - src/curriculum/procedimentos/comparacaoQuantidadeContract.ts
     - live Coverage Matrix and curriculum/grafo_saga.yaml
   first_engineering_action_if_remote_agrees: regression_first_for_N2_03_F29
+
+observatory_front:
+  date: "2026-08-18"
+  document: 03_architecture/OBSERVATORIO_E_AUDITORIA.md
+  decisions: [D057, D058, D059, D060, D061, D062, D063, D064, D065]
+  experiments: [E006, E007, E008, E009, E010]
+  status: pre_canonical
+  implementation_authorized: false
+  problem: >
+    Nenhum instrumento responde "a crianca aprendeu?" nem "o motor decidiu
+    certo?". Progress e fotografia de estado; a decisao do orquestrador nao e
+    persistida em lugar nenhum.
+  window: >
+    Restam 4 fallbacks. A fabrica curricular termina sozinha em poucas ondas.
+    O risco e o vazio seguinte ser ocupado por outra fila interna antes de
+    qualquer observacao de crianca real.
+  reconciliation:
+    d007_receipts: instanciada_por_D057
+    d008_raw_telemetry: preservada_schema_fechado
+    d023_raw_speech: preservada_anotacao_escrita
+    d031_global_score: preservada_proibido
+    d032_rt_as_mastery: preservada_rt_e_telemetria
+    d034_falsification_gate: estendida_eixo_longitudinal
+    d036_rigid_percentage: proposta_3_para_1_retirada
+    d046_thinking_now: preservada_reject
+  verification_method:
+    runtime_state: git_fetch_da_branch_remota
+    branch_head: "22433a3"
+    head_date: "2026-08-18T00:35:59-03:00"
+    pr_state_source: documentos_vivos_da_branch
+    pr_state_reanchored_via_api_this_session: false
+    domain_check: rdap_verisign_e_registro_br
+  next_action_if_authorized: E006
