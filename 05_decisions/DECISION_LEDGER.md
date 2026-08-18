@@ -67,6 +67,7 @@
 | D063 | Portão de continuidade por achado aberto, não por razão fixa | EXPERIMENT |
 | D064 | Costuras de expansão sem runtime (domínio, ponte, aprendiz único) | KEEP |
 | D065 | Naming diferido; SAGA permanece codinome interno | DEFER |
+| D066 | `MANIFEST.sha256.json` é snapshot histórico, não gate; vermelho intencional não se conserta | KEEP |
 
 ## Reconciliação D057–D065
 
@@ -155,3 +156,28 @@ Evidência: 32 candidatos verificados por RDAP em `.com` e `.com.br`;
 
 Pré-requisito para abrir a frente: existir criança fora de casa usando o
 produto. Até lá, `SAGA` é codinome interno sem investimento de marca.
+
+### D066 · Manifesto histórico não é gate
+
+Formaliza no Ledger o que `06_research/external_reviews/RECOVERY_STATUS_2026-08-11.md`
+já estabelecia, porque a regra estava enterrada num documento de recuperação e uma
+sessão posterior a violou justamente por não encontrá-la.
+
+Vigente:
+
+- `MANIFEST.sha256.json` é snapshot do repositório em 10/08/2026. Contém documentos
+  mutáveis. **Não é portão** e não deve ser ressincronizado para "ficar verde".
+- A autoridade mecânica de integridade é `ORIGINALS_MANIFEST.sha256.json` +
+  `tools/verify_originals_integrity.py`, executados por `.github/workflows/integrity.yml`.
+  O escopo estreito é correto: git já protege conteúdo de texto versionado; o pacote
+  Base64 reconstruído é a única coisa que git não protege.
+- Os hashes de `ORIGINALS_*.base64.part05` e `part08` permanecem vermelhos por decisão.
+  Só mudam com recuperação real do conteúdo, nunca para acomodar dano — Issue #1.
+- `tools/verify_integrity.py` roda somente sob pedido humano, sobre um snapshot
+  histórico. Saída vermelha nele é o comportamento esperado e não indica corrupção.
+
+Precedente: em 18/08/2026 uma sessão leu o vermelho como bug, classificou-o como
+"gate falhando há sete dias" e atualizou o manifesto para sete arquivos. A alteração
+foi revertida e o arquivo conferido contra `4b89c51`. `part05`/`part08` não foram
+atingidos. O incidente fica registrado porque o modo de falha é atraente: um
+verificador vermelho convida à correção, e aqui corrigir é o erro.

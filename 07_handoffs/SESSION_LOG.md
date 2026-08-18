@@ -33,9 +33,32 @@
 - Naming diferido (D065) com evidência RDAP: 32 candidatos verificados em `.com` e `.com.br`, 31 ocupados.
 - Nada nesta sessão altera o SAGA produtivo. `implementation_authorized: false` permanece.
 
-### Achado colateral — manifesto de integridade obsoleto há 7 dias
-- `tools/verify_integrity.py` falha desde 11/08/2026 e ninguém observou: o verificador não está ligado a nenhum gate de CI.
-- `MANIFEST.sha256.json` foi sincronizado pela última vez em `4b89c51`, 10/08 21:26. Três documentos foram editados depois disso e nunca ressincronizados: `06_research/evidence/EVIDENCE_LEDGER.md` (`12e56da`, 11/08 09:46), `09_integration/MIGRATION_FROM_TEMP_ARCHIVE.md` (`a65e894`, 11/08 09:45) e `06_research/external_reviews/README.md` (`0254af4`, 11/08 10:52).
-- As duas divergências em `ORIGINALS_2026-08-10.zip.base64.part05/part08` são de outra natureza e provavelmente pertencem ao Issue #1 de integridade do transporte, já aberto e com `originals_archive_verified: false`.
-- Conduta adotada nesta sessão: atualizar no manifesto **somente** os sete arquivos efetivamente tocados aqui, aplicando a regra do PR #35 — *baseline nunca mascara deriva*. As cinco divergências alheias permanecem vermelhas de propósito, para serem investigadas com causa própria e não apagadas por conveniência.
-- Recomendação: decidir se `verify_integrity.py` vira gate real. Um verificador que falha há uma semana sem consequência é pior que nenhum, porque produz confiança que não existe.
+### Retificação — o "achado" do manifesto era falso
+
+Durante esta sessão registrei que `tools/verify_integrity.py` estaria falhando há
+sete dias sem gate que observasse, e tratei o vermelho como bug. **Estava errado
+nos dois pontos, e a correção ficou registrada aqui em vez de ser apagada.**
+
+O que o repositório já dizia desde 11/08, em
+`06_research/external_reviews/RECOVERY_STATUS_2026-08-11.md`:
+
+- `MANIFEST.sha256.json` é um **snapshot do repositório em 10/08**, contém
+  documentos mutáveis e **não deve virar bloqueio** que trate edição legítima de
+  documentação como corrupção;
+- a autoridade mecânica de integridade passou para `ORIGINALS_MANIFEST.sha256.json`
+  + `tools/verify_originals_integrity.py`, executados por
+  `.github/workflows/integrity.yml`;
+- os hashes de `part05` e `part08` **não foram atualizados de propósito**: o
+  mecanismo deve continuar vermelho até recuperação real.
+
+Ou seja: o vermelho não era negligência, era decisão explícita e documentada.
+O CI da Foundry está correto ao verificar apenas o transporte imutável dos
+originais (`f64f9f3`, 11/08 10:05).
+
+Erro cometido e desfeito nesta sessão: atualizei `MANIFEST.sha256.json` para sete
+arquivos, misturando hashes de 18/08 num snapshot de 10/08. O arquivo foi
+restaurado ao estado de `4b89c51` e conferido byte a byte. `part05` e `part08`
+nunca foram tocados — a única linha cuja violação teria sido grave.
+
+Consequência registrada como **D066**, para que o próximo agente não repita:
+manifesto histórico não é gate, e vermelho intencional não se conserta.
