@@ -62,3 +62,16 @@ nunca foram tocados — a única linha cuja violação teria sido grave.
 
 Consequência registrada como **D066**, para que o próximo agente não repita:
 manifesto histórico não é gate, e vermelho intencional não se conserta.
+
+### Complemento — material que só existia fora do repositório
+Dois documentos foram extraídos da sessão para a Foundry, porque continham detalhe
+que não sobreviveria ao fim da conversa:
+
+- `02_pedagogy/PRINCIPIOS_NOMEADOS.md` — os 18 princípios de ciência da aprendizagem
+  já implementados no SAGA, com nome técnico e localização no código. É o índice da
+  propriedade intelectual pedagógica e a base das perguntas de auditoria.
+- `01_vision/NAMING_BRIEF.md` — critérios, processo de 5 passos, evidência RDAP
+  (31 de 32 candidatos ocupados) e a colisão conhecida da marca SAGA. Suporta D065.
+
+Nenhum dos dois altera decisão vigente. `MANIFEST.sha256.json` não foi tocado,
+conforme D066.
