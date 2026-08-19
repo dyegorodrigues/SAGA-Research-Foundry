@@ -11,11 +11,28 @@ production:
   active_development_branch: codex/fechamento-curricular
   active_pr: 35
   protected_main_reference: 106dfe0d796babebe40ebc36e5a84d4a80b9a858
-  current_wave_status: W1_W46_closed_W47_regression_first_validated
-  next_wave: W47_N6_02_F76
+  current_wave_status: curricular_factory_closed_90_of_90
+  next_wave: none_factory_complete
   operational_door: AI_Studio_Lab/codex/PROMPT_DE_RETOMADA.md
   live_index: AI_Studio_Lab/codex/ESTADO_DO_FECHAMENTO.md
-  remaining_fallbacks: [GM.11, N5.05, N6.02, PE.04]
+  remaining_fallbacks: []
+  closure:
+    technical_sha: efd270b732752ebe0d38a47efff47d958e352802
+    technical_ci: 32196855192
+    documental_sha: dc6c21c2ba013e104813a534c55de804c546b770
+    documental_ci: 32197697198
+    matrix_observed: "75 composer / 15 legado / 0 fallback / 90 servidas / 11 divergencias"
+    verified_by_this_session: rdap_nao; git_e_actions_api_sim
+  post_90_authority:
+    issue: 47
+    title: "Integracao Sistemica e Child-Ready"
+    note: >
+      Autoridade do pos-90/90. A frente Observatorio desta Foundry e subordinada
+      a ela por D067 e nao abre fila concorrente.
+  next_action_prescribed_by_issue_47: >
+    Materializar AI_Studio_Lab/codex/ROADMAP_90_90_CHILD_READY.md como indice
+    executivo apontando para as fontes canonicas, e transicionar formalmente o
+    modo do projeto de Fabrica Curricular para Integracao Sistemica e Child-Ready.
   implementation_authorized: false
   note: >
     Bloco anterior (PR #29 / W6) estava obsoleto em 40 ondas curriculares.

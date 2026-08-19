@@ -68,6 +68,7 @@
 | D064 | Costuras de expansão sem runtime (domínio, ponte, aprendiz único) | KEEP |
 | D065 | Naming diferido; SAGA permanece codinome interno | DEFER |
 | D066 | `MANIFEST.sha256.json` é snapshot histórico, não gate; vermelho intencional não se conserta | KEEP |
+| D067 | Issue #47 é autoridade do pós-90/90; Observatório é subordinado, não fila paralela | KEEP |
 
 ## Reconciliação D057–D065
 
@@ -181,3 +182,26 @@ Precedente: em 18/08/2026 uma sessão leu o vermelho como bug, classificou-o com
 foi revertida e o arquivo conferido contra `4b89c51`. `part05`/`part08` não foram
 atingidos. O incidente fica registrado porque o modo de falha é atraente: um
 verificador vermelho convida à correção, e aqui corrigir é o erro.
+
+### D067 · Issue #47 é a autoridade do pós-90/90
+
+A frente Observatório (D057–D065) foi registrada em 18/08. A Issue #47 do SAGA
+— *Integração Sistêmica e Child-Ready* — foi aberta em 17/08, é mais completa e
+vive no repositório de produção.
+
+Sobreposição material identificada: evento de prescrição ≡ Gate D (decision trace),
+Recibo de Sessão ≡ Gate E (telemetria), personas sintéticas ≡ Gate G (Aprendiz
+Simulado), criança sozinha ≡ Gate J (piloto silencioso), auditorias A2/A3 ≡ Gate B.
+
+Vigente: **#47 vence em qualquer divergência.** O Observatório passa a ser material
+de apoio das gates de #47 e não abre fila concorrente. Isso cumpre a própria §15 de
+#47, que proíbe paralelismo que crie duas autoridades.
+
+Contribuição que permanece exclusiva desta frente: **medição de aprendizagem fora
+do motor adaptativo** — linha de base, pós-teste, retenção atrasada, transferência,
+prova de papel e justificativa anotada. #47 mede usabilidade, coerência longitudinal
+e observabilidade; nenhuma dessas responde se a criança aprendeu.
+
+Restrição temporal registrada: a linha de base é recurso não renovável e precisa ser
+coletada **antes** do piloto do Gate J. Depois do primeiro uso sério ela é
+irrecuperável e o ganho deixa de ser interpretável.

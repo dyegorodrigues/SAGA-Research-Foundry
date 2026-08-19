@@ -189,3 +189,54 @@ anterioridade.
 
 Brief e processo ficam registrados quando a frente for aberta. Pré-requisito:
 existir criança fora de casa usando o produto.
+
+## Reconciliação com a Issue #47 — quem manda
+
+**A Issue #47 do SAGA é a autoridade do pós-90/90.** Ela foi escrita em 17/08, é
+mais completa que esta frente e vive no repositório de produção. Esta frente é
+**subordinada** a ela e não cria fila paralela.
+
+Sobreposição real, já coberta por #47 e que **não deve ser reimplementada aqui**:
+
+| Parte desta frente | Autoridade em #47 |
+|---|---|
+| Evento de prescrição | Gate D — decision trace obrigatório |
+| Recibo de Sessão | Gate E — telemetria e observabilidade |
+| Personas sintéticas | Gate G — Aprendiz Simulado (lista mais completa) |
+| Criança sozinha | Gate J — piloto infantil silencioso |
+| Auditorias A2/A3 | Gate B — mega-auditoria de microprogressão |
+
+Onde houver divergência de detalhe, **#47 vence**. Este documento passa a ser
+material de apoio dessas gates, não plano concorrente.
+
+### O que esta frente acrescenta e #47 não tem
+
+Uma coisa só, e é substantiva:
+
+> **Medir se a criança aprendeu, fora do motor adaptativo.**
+
+#47 mede usabilidade (Gate J), coerência longitudinal (Gate G) e observabilidade
+(Gate E). Nenhum desses responde *"a criança aprendeu matemática?"*.
+
+Instrumentos ausentes em #47, definidos na Parte 2 deste documento:
+
+- linha de base antes do primeiro uso — **irrecuperável depois**;
+- pós-teste e retenção atrasada (3 e 8 semanas após parar);
+- itens de transferência fora da tela;
+- prova de papel;
+- justificativa oral anotada.
+
+E o guardrail que os sustenta: **taxa de acerto dentro do motor não é evidência
+de aprendizagem** — um sistema adaptativo correto mantém a criança perto de 80%
+por construção. Medir acerto interno mede o motor, não a criança.
+
+Proposta de encaixe: esses instrumentos entram como sub-item do Gate J de #47,
+ou como gate próprio entre J e a calibração. Decisão do usuário.
+
+### Recurso não renovável
+
+A linha de base só pode ser coletada uma vez por criança, antes do primeiro uso
+sério. Se o piloto do Gate J acontecer antes dela, o dado de partida some para
+sempre e nenhuma medida posterior de ganho é interpretável.
+
+É o único item desta frente com prazo, e ele é anterior ao Gate J.

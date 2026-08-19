@@ -75,3 +75,39 @@ que não sobreviveria ao fim da conversa:
 
 Nenhum dos dois altera decisão vigente. `MANIFEST.sha256.json` não foi tocado,
 conforme D066.
+
+## 2026-08-19 — Verificação independente do 90/90 e subordinação à Issue #47
+
+Verificação do fechamento reportado pela sessão de produção, contra o remoto:
+
+- HEAD `dc6c21c` e promoção `efd270b` confirmados por git;
+- `N5.05` presente em `composerCanaryIds.ts`; canário com 75 competências;
+- ledger `W50-N5.05` em `coverage_matrix_core.ts` com delta `{composer:+1, fallback:-1, served:+1}`;
+- contrato em `coverageMatrix.test.ts` observa `75 / 15 / 0 / 90 / 11`, `modeSwaps=12`, `toolIntroductions=44`;
+- CI `32196855192` → head_sha `efd270b`, run 1523, `completed/success`;
+- CI `32197697198` → head_sha `dc6c21c`, run 1524, `completed/success`;
+- SHAs distintos por recibo — nenhuma reutilização;
+- `main` intocada em `106dfe0`; PR #35 segue `open + draft + unmerged`;
+- seção "Frente paralela — Observatório" preservada e **corrigida** pela sessão de
+  produção, que separou D066 de D057–D065. A correção está certa.
+
+Suíte não executada localmente (sem `node_modules`); a verificação de execução real
+apoia-se nos dois runs de CI acima, conferidos por API.
+
+### Achado principal — risco de autoridade dupla
+
+A Issue #47 (17/08) cobre, com mais detalhe, quase toda a frente Observatório
+registrada em 18/08: Gate D ≡ evento de prescrição, Gate E ≡ Recibo de Sessão,
+Gate G ≡ personas sintéticas, Gate J ≡ criança sozinha, Gate B ≡ auditorias A2/A3.
+
+Registrado **D067**: #47 é a autoridade do pós-90/90 e o Observatório é subordinado.
+Cumpre a §15 da própria #47, que proíbe paralelismo com autoridades concorrentes.
+
+Contribuição exclusiva preservada: medição de aprendizagem **fora** do motor
+adaptativo — #47 mede usabilidade, coerência longitudinal e observabilidade, e
+nenhuma dessas responde se a criança aprendeu. Com o guardrail de que acerto
+dentro de motor adaptativo não é evidência de aprendizagem.
+
+Restrição temporal: a linha de base é recurso não renovável e precede o Gate J.
+
+`MANIFEST.sha256.json` não foi tocado, conforme D066.
