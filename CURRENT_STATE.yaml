@@ -78,7 +78,28 @@ production:
     progresso: "33 de 90 competencias auditadas; faltam N4 N5 N6 N7 AL GE GM PE"
     candidatas_abertas: 27
     vias_acumuladas: "23 CODIGO / 1 SIMULACAO / 3 CRIANCA"
-    proximo_lote: N4
+    lote_4:
+      dominio: N4
+      competencias: 12
+      sha: 4a2ad53ca31008bce66e25730b3bf37b6d11e395
+      individuais: 4
+      classes: [CLASS-002, CLASS-003]
+      verificado_por_esta_sessao: >
+        Escopo de 3 arquivos documentais e main intocada. Refutacao do CLASS-002
+        confirmada: unlockEngine usa GrafoSaga derivado do DAG, nao a ficha; nao ha
+        desbloqueio precoce.
+    progresso: "45 de 90 auditadas; faltam N5 N6 N7 AL GE GM PE"
+    proximo_lote: N5
+    conformance_ficha_dag:
+      varrido: 90_de_90_competencias
+      prereqs_divergentes: 6
+      faixa_divergentes: 4
+      classe_fechada: true
+      caso_nao_encontrado_pelo_gate_b: GM.04
+      gm04: >
+        Unico caso disjunto: ficha [N2.01, AL.01] contra DAG [N1.06], sem intersecao,
+        mais faixa F2 contra F1. Os demais sao subconjunto, direcao segura. GM.04 e
+        discordancia pedagogica real, nao higiene de metadado.
     lacuna_estrutural_do_plano: >
       A secao 15 da Issue #47 nao define fase de reparo para a saida do Gate B.
       Proposta registrada: Gate B-linha entre B e C, com CODIGO fechando primeiro,

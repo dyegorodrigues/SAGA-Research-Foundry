@@ -177,3 +177,21 @@ Registrada a lacuna estrutural: o plano não tem fase de reparo para a saída do
 27 candidatas abertas, 23 delas via `CODIGO`, e a projeção para os 57 competências
 restantes é de mais 40–50. Sem Gate B′, o piloto infantil rodaria sobre defeitos
 confirmados e a observação da criança ficaria ininterpretável.
+
+### Gate B · Lote 4 (N4) verificado — 19/08/2026
+SHA `4a2ad53`, 3 arquivos documentais, `main` intocada. A refutação do CLASS-002 foi
+verificada e está correta: `unlockEngine.ts` importa `GrafoSaga` de `utils/grafoSaga`,
+derivado de `curriculum/grafo_saga.ts`, e itera `node.prereqs`; a ficha não participa
+do desbloqueio. Não há liberação precoce.
+
+**Varredura própria sobre as 90 competências** (não só as 45 auditadas) para dimensionar
+a classe de conformance ficha↔DAG: 6 divergências de `prereqs` e 4 de `faixa`, total 10.
+A classe está **fechada** — o repositório inteiro foi varrido.
+
+Um caso não foi encontrado pelo Gate B por estar em domínio não auditado: **`GM.04`**,
+ficha `[N2.01, AL.01]` contra DAG `[N1.06]`, disjuntos, mais faixa F2 contra F1. É o
+único caso que não é subconjunto, e por isso é discordância pedagógica sobre quando a
+competência pode ser ensinada — não higiene de metadado.
+
+Proposta registrada: unificar CLASS-002 + GAP-026 + GAP-007 + GAP-021 numa classe única
+fechável por um teste ficha↔DAG, e tratar `GM.04` como decisão à parte.

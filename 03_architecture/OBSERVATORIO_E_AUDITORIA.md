@@ -362,3 +362,51 @@ Fase de reparo explícita, dividida por via:
 
 Regra: nenhuma candidata de via `CODIGO` deve continuar aberta quando o Gate J
 começar. Sujeito a D067 — proposta, sem autoridade sobre a Issue #47.
+
+## Conformance ficha ↔ DAG — classe fechada em 10 casos
+
+Varredura própria em 19/08/2026 sobre **todas as 90 competências** do HEAD `4a2ad53`
+— não apenas as 45 já auditadas pelo Gate B. Compara `prereqs` e `faixa` de cada
+ficha TS contra `src/curriculum/grafo_saga.ts`.
+
+### prereqs divergentes — 6
+
+| Competência | Ficha | DAG | Já achado? |
+|---|---|---|---|
+| `N3.10` | `[N3.03]` | `[N3.03, N3.04]` | GAP-026 |
+| `N4.03` | `[N4.01]` | `[AL.03, N4.01]` | CLASS-002 |
+| `N4.06` | `[N4.03]` | `[N4.03, N4.05]` | CLASS-002 |
+| `N4.07` | `[N4.04]` | `[N4.04, N4.06]` | CLASS-002 |
+| `N4.08` | `[N4.07]` | `[N2.04, N3.11, N4.07]` | CLASS-002 |
+| **`GM.04`** | `[N2.01, AL.01]` | `[N1.06]` | **não — domínio não auditado** |
+
+### faixa divergente — 4
+
+`N1.08` (F1↔F0) · `N1.12` (F0/F1↔F1) · `N2.07` (F2↔F3) · **`GM.04`** (F2↔F1)
+
+### Duas consequências
+
+**1. A classe está fechada em 10 casos.** Não é dívida aberta que cresce a cada lote:
+o repositório inteiro foi varrido e não há mais nada. Isso permite dimensionar o
+reparo agora, sem esperar os cinco lotes restantes.
+
+**2. `GM.04` é de natureza diferente e mais grave.** Todos os outros são *ficha
+declara subconjunto do DAG* — direção segura, porque o `unlockEngine` usa
+`GrafoSaga`, derivado do DAG, e portanto aplica a regra mais estrita. `GM.04`
+declara pré-requisitos **disjuntos**: `[N2.01, AL.01]` na ficha contra `[N1.06]` no
+DAG, sem interseção. O runtime segue o DAG, então "Horas" desbloqueia após `N1.06`
+enquanto a autoria da ficha pressupunha sistema decimal e álgebra inicial.
+
+Não é higiene de metadado: é uma discordância pedagógica real sobre quando a
+competência pode ser ensinada, e alguém precisa decidir qual das duas está certa.
+
+### Sobre CLASS-002
+
+A refutação registrada no Lote 4 está **correta e foi verificada**: `unlockEngine.ts`
+importa `GrafoSaga` de `utils/grafoSaga`, que deriva de `curriculum/grafo_saga.ts`,
+e itera `node.prereqs`. A ficha não participa da decisão de desbloqueio. Não há
+liberação precoce hoje.
+
+Proposta: unificar CLASS-002, GAP-026, GAP-007, GAP-021 e o caso `GM.04` numa única
+classe de conformance ficha↔DAG, fechável por um teste que compara os dois. `GM.04`
+sai dessa classe e vira decisão pedagógica própria. Sujeito a D067.
