@@ -111,3 +111,21 @@ dentro de motor adaptativo não é evidência de aprendizagem.
 Restrição temporal: a linha de base é recurso não renovável e precede o Gate J.
 
 `MANIFEST.sha256.json` não foi tocado, conforme D066.
+
+### Transição pós-90/90 verificada — 19/08/2026
+SHA `b116e6c5`, CI `32203533458` `completed/success`, run 1525, head_sha conferido por API.
+Escopo real: 2 arquivos — `ROADMAP_90_90_CHILD_READY.md` (índice de 118 linhas, aponta
+para fontes canônicas sem copiá-las) e transição de `PROMPT_DE_RETOMADA.md`. `main`
+intocada em `106dfe0`; PR #35 segue open+draft+unmerged.
+
+Gate A `FECHADO-COM-RECIBO`; Gates B–J `NÃO INICIADO`. Dívidas classificadas pela §0.2:
+15 legado, 11 divergências, `Moedas`/GM.03 e hardening/bundle como `CONFIRMADO-ATUAL`;
+Issue #48 e Observatório como `DÍVIDA-REGISTRADA`. D067 foi absorvida corretamente na
+porta operacional.
+
+A precondição LINHA DE BASE entrou no Gate J como não renovável, com coleta não iniciada.
+
+Observação registrada para a próxima sessão: entre Gate A e Gate J há nove gates de
+trabalho interno. A linha de base **não depende de nenhum deles** — é em papel e pode
+ser coletada imediatamente. É o único item irreversível do quadro e o único cujo custo
+de adiamento é permanente.

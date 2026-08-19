@@ -11,7 +11,7 @@ production:
   active_development_branch: codex/fechamento-curricular
   active_pr: 35
   protected_main_reference: 106dfe0d796babebe40ebc36e5a84d4a80b9a858
-  current_wave_status: curricular_factory_closed_90_of_90
+  current_wave_status: post_90_transition_certified_child_ready_mode
   next_wave: none_factory_complete
   operational_door: AI_Studio_Lab/codex/PROMPT_DE_RETOMADA.md
   live_index: AI_Studio_Lab/codex/ESTADO_DO_FECHAMENTO.md
@@ -29,10 +29,28 @@ production:
     note: >
       Autoridade do pos-90/90. A frente Observatorio desta Foundry e subordinada
       a ela por D067 e nao abre fila concorrente.
-  next_action_prescribed_by_issue_47: >
-    Materializar AI_Studio_Lab/codex/ROADMAP_90_90_CHILD_READY.md como indice
-    executivo apontando para as fontes canonicas, e transicionar formalmente o
-    modo do projeto de Fabrica Curricular para Integracao Sistemica e Child-Ready.
+  transition:
+    done: true
+    sha: b116e6c5cca6ce191d322e9c230eb76ffe1a3db0
+    ci: 32203533458
+    files_changed: 2
+    roadmap: AI_Studio_Lab/codex/ROADMAP_90_90_CHILD_READY.md
+    mode: Integracao Sistemica e Child-Ready
+    gate_a: FECHADO-COM-RECIBO
+    gates_b_to_j: NAO-INICIADO
+    verified_by_this_session: git_e_actions_api
+  next_gate_per_issue_47_s15: >
+    Gate B — mega-auditoria curricular e de microprogressao. Achados vao para a
+    Issue #48. Recomendacao desta Foundry: executar em lotes por dominio, com
+    regra de parada, para nao virar monolito de semanas.
+  baseline_pendente:
+    status: DIVIDA-REGISTRADA
+    bloqueia: Gate J
+    dependencia_de_gate: nenhuma
+    nota: >
+      A linha de base e em papel e nao depende de nenhum gate. Pode ser coletada
+      hoje. E o unico item irreversivel do quadro: perdido o ponto de partida,
+      nenhum ganho posterior tem interpretacao causal limpa.
   implementation_authorized: false
   note: >
     Bloco anterior (PR #29 / W6) estava obsoleto em 40 ondas curriculares.
