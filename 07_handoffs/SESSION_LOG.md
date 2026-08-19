@@ -149,3 +149,19 @@ Contribuição registrada: taxonomia de **via de resolução** (`CODIGO` / `SIMU
 domínios restantes viram registro que só cresce. Consequência relevante: parte dos
 achados só fecha por observação de criança, o que torna o Gate J mecanismo de
 resolução do Gate B — e não apenas etapa final. Reforça a precondição de linha de base.
+
+### Gate B · Lote 2 (N2) verificado — 19/08/2026
+SHA `a5101b3`, escopo de 3 arquivos documentais, nenhum `src/`, `main` intocada em
+`106dfe0`. Amostragem contra a fonte confirmou dois achados:
+- **GAP-021** — grafo declara `N2.07 faixa: F3`; ficha TS declara `"F2"`.
+- **GAP-018** — `gN2_05` recebe `lvl` e nunca o usa; `base = ri(1,9)*10` fixa dois
+  dígitos e todos os níveis viram "arredonde para a dezena".
+
+CI `32216926616` não foi reconferido por API nesta rodada; as três verificações
+anteriores de CI conferiram, e o escopo do diff foi validado por git.
+
+**Achado estrutural desta sessão:** a função seguinte a `gN2_05` tem o mesmo defeito,
+o que motivou varredura. Em `generatorsF2.ts`, 4 de 8 geradores declaram `lvl` e o
+ignoram: `gN3_11`, `gN3_12`, `gN2_05`, `gN3_13`. Três são N3 — domínio do Lote 3.
+É classe, não quatro candidatas. Fecha com um teste que proíbe o padrão.
+`src/utils/generators.ts` usa outra estrutura e não foi mapeado.

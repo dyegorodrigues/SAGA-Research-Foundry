@@ -53,7 +53,22 @@ production:
         HEAD, escopo de 3 arquivos documentais, CI por API, e amostragem de dois
         achados contra a fonte: GAP-011 (N1.13 folha no DAG) e GAP-007 (faixa F1
         no grafo vs F0/F1 na ficha viva). Ambos reais.
-    proximo_lote: N2
+    lote_2:
+      dominio: N2
+      competencias: 7
+      sha: a5101b362ae6d4896258f994ed14145b37950b98
+      achados: 10
+      vias: "9 CODIGO / 1 SIMULACAO / 0 CRIANCA"
+      audit_only: true
+      verificado_por_esta_sessao: >
+        HEAD, escopo de 3 arquivos documentais, main intocada, e amostragem contra
+        a fonte: GAP-021 (grafo F3 vs ficha F2) e GAP-018 (gN2_05 ignora lvl).
+        Ambos reais. CI nao reconferido por API nesta rodada.
+    proximo_lote: N3
+    achado_estrutural_desta_sessao: >
+      4 de 8 geradores em src/utils/generatorsF2.ts declaram lvl e ignoram:
+      gN3_11, gN3_12, gN2_05, gN3_13. Tres sao N3, dominio do Lote 3. Deve ser
+      tratado como classe com teste proprio, nao como quatro candidatas isoladas.
     proposta_metodologica: >
       Cada achado deve nascer com via de resolucao declarada — CODIGO, SIMULACAO
       ou CRIANCA. Ver OBSERVATORIO_E_AUDITORIA.md. Achados de via CODIGO fecham

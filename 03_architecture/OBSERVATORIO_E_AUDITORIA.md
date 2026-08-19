@@ -271,3 +271,41 @@ Proposta: cada achado do Lote 2 em diante nasce com `via` declarada. Achados de 
 `CODIGO` podem ser fechados sem esperar os gates seguintes.
 
 Sem autoridade sobre a Issue #47 — proposta metodológica, sujeita a D067.
+
+## Achado estrutural — `lvl` declarado e ignorado em `generatorsF2.ts`
+
+Encontrado ao verificar o GAP-018 do Lote 2 (N2.05) contra a fonte, em 19/08/2026.
+
+`gN2_05` recebe `lvl: number` e **nunca o referencia no corpo**. `base = ri(1,9)*10`
+produz sempre um número de dois dígitos, e o enunciado é sempre *"arredonde para a
+dezena mais próxima"*. Os cinco níveis entregam a mesma tarefa. A ficha promete
+dezena → centena → milhar → precisão → estimativa.
+
+Isso confirma o GAP-018 — mas a função imediatamente seguinte no arquivo tem o
+mesmo defeito, o que sugeriu padrão em vez de caso isolado.
+
+Varredura de `src/utils/generatorsF2.ts` no HEAD `a5101b3`:
+
+| | |
+|---|---|
+| geradores com parâmetro `lvl` | 8 |
+| **usam** `lvl` | 4 |
+| **declaram e ignoram** `lvl` | **4** — `gN3_11`, `gN3_12`, `gN2_05`, `gN3_13` |
+
+Escopo da varredura: apenas `generatorsF2.ts`. `src/utils/generators.ts` não contém
+geradores nesse formato e não foi mapeado — a varredura precisa ser refeita com o
+padrão correto antes de qualquer afirmação sobre ele.
+
+### Por que isso muda o Gate B
+
+1. **Três dos quatro são N3** — domínio do Lote 3. O padrão foi identificado antes
+   do lote que iria encontrá-lo.
+2. É **um achado estrutural, não quatro candidatas independentes**. Tratar como
+   quatro GAPs separados perde a causa comum e multiplica o registro sem multiplicar
+   a informação.
+3. É via `CODIGO` de verificação trivial: um teste que falha quando um gerador
+   declara `lvl` e não o usa fecha a classe inteira e impede reincidência — em vez
+   de auditar competência por competência.
+
+Proposta: o Lote 3 deve começar verificando se o padrão se estende, e o registro
+deve tratá-lo como classe. Sujeito a D067 — sem autoridade sobre a Issue #47.
