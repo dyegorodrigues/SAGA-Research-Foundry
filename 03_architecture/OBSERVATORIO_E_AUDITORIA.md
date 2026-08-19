@@ -586,3 +586,83 @@ sabe torto.
 A correção é pequena: aplicar o Fisher-Yates que já existe em `GameLoop.tsx:109` na
 serialização das opções, e travar com teste que reprove corpus cuja resposta correta
 fique na mesma posição em todos os casos canônicos.
+
+## REGRESSÃO NO REPARO CLASS-005/006 — documentação vinculante apagada
+
+Encontrada em 19/08/2026 ao verificar o HEAD `799b3a4`. **O reparo funcional está
+correto; o dano é colateral e não foi detectado por nenhum gate.**
+
+### O que está certo
+
+- `sort(() => Math.random() - 0.5)`: **27 → 0**;
+- `src/utils/shuffle.ts` criado, Fisher-Yates único e compartilhado;
+- `class005006ShufflePolicy.test.ts` com 122 linhas;
+- guards de validação curricular do Composer **preservados** — `Intervalo vertical`,
+  `exigir e proibir`, `Reagrupamento duplo`, `operand_step` mantêm contagem idêntica;
+- cadeia vermelho → reparo → verde coerente e com recibos reais.
+
+### O que quebrou
+
+| Arquivo | Linhas | Comentários | Bytes |
+|---|---|---|---|
+| `src/curriculum/Composer.ts` | 1245 → 483 | **152 → 0** | −16.566 |
+| `src/components/GameLoop.tsx` | 1179 → 515 | **89 → 0** | −13.101 |
+
+**Todos os comentários dos dois arquivos de runtime mais importantes foram removidos.**
+Cerca de 30 KB de rationale.
+
+Desproporção: no `Composer.ts` apenas **18 linhas** continham o padrão a corrigir.
+Foram removidas **762**.
+
+### Por que isso é dano real, e não estética
+
+Entre o texto perdido está regra vinculante de diagnóstico:
+
+> *"A ordem é a armadilha §6.8: do mais específico ao mais genérico. Com `OFF_BY_ONE`
+> na frente, ele engoliria `CHUTE_SEGURO` toda vez que a alternativa central caísse a
+> um do alvo."*
+
+> *"Fica aqui, e não em `tagNumericDistractors`, porque duas das três tags não são
+> regras sobre o valor: `CHUTE_SEGURO` fala da POSIÇÃO na tela e `COPIA_ULTIMO` fala
+> da peça anterior à lacuna."*
+
+São as instruções que impedem alguém de reordenar a lista de tags e quebrar o Radar
+**em silêncio**. Sem elas, a próxima sessão reordena por elegância e o diagnóstico
+degrada sem teste vermelho.
+
+### É reincidência, e o protocolo já a proíbe
+
+O corpo do PR #35 registra a mesma falha na W36, quando `ficha_runtime_map.cjs` foi
+comprimido e perdeu literais e documentação vinculantes. A regra escrita ali:
+
+> *"Cânone compartilhado é aditivo. Cânone não se comprime: não remover documentação,
+> rationale, aliases, notas ou observabilidade preexistentes."*
+
+`Composer.ts` e `GameLoop.tsx` não constam da lista nominal de cânone compartilhado,
+mas são o motor de composição e o laço de jogo. O princípio se aplica com ainda mais
+força, e a lista provavelmente está incompleta.
+
+### Por que o CI ficou verde
+
+Comentário não é testado. Os recibos `32308381219` e `32308381231` são legítimos e
+não cobrem este dano. É o limite do portão, não fraude do relatório — a sessão de
+produção reportou o reparo com honestidade e provavelmente não percebeu a perda.
+
+### Recuperação
+
+O conteúdo está em `66b40d0` e não se perdeu do Git. Duas rotas:
+
+1. **Preferida** — refazer o reparo como diff cirúrgico a partir de `66b40d0`,
+   tocando apenas as linhas do padrão e os imports. Produz o mesmo resultado
+   funcional sem tocar em mais nada.
+2. Restaurar a documentação sobre o código atual, arquivo por arquivo, conferindo
+   que cada bloco voltou ao lugar certo.
+
+### Gate que faltava
+
+Nenhum portão observa perda de documentação. Proposta: teste que reprova queda de
+densidade de comentários acima de um limiar em arquivos de runtime declarados
+sensíveis, no espírito da catraca de `coresLiterais.test.ts` — o teto só desce
+quando alguém registra explicitamente a melhora.
+
+Sujeito a D067.

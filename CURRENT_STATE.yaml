@@ -118,7 +118,24 @@ production:
       individuais: 2
       classes: [CLASS-001, CLASS-002, CLASS-003, CLASS-004, CLASS-005, CLASS-006]
     progresso: "56 de 90 auditadas; faltam AL GE GM PE"
-    proximo_lote: AL
+    proximo_lote: AL_bloqueado_por_regressao
+    reparo_class_005_006:
+      sha_vermelho: 25580edc3beafd7167c779eff17b02fd3173ecd1
+      sha_verde: 799b3a4082b75811632216e21ab594d9625fa93b
+      funcional: correto
+      sort_random: "27 -> 0"
+      utilitario: src/utils/shuffle.ts
+      regressao_colateral:
+        gravidade: alta
+        fato: >
+          Composer.ts perdeu 152 linhas de comentario e GameLoop.tsx perdeu 89.
+          Cerca de 30 KB de rationale vinculante apagado, incluindo a regra de
+          ordem das tags de misconception que impede quebra silenciosa do Radar.
+        desproporcao: "18 linhas tinham o padrao no Composer; 762 foram removidas"
+        guards_semanticos: preservados
+        ci_verde: legitimo_mas_nao_cobre_comentario
+        reincidencia: "mesma falha da W36 com ficha_runtime_map.cjs"
+        recuperacao: refazer_como_diff_cirurgico_a_partir_de_66b40d0
     class_006_estendida_por_esta_sessao:
       escopo_real: "26 de 39 contratos especializados, nao apenas N7"
       cadeia_verificada: >

@@ -258,3 +258,24 @@ Domínio pode ser obtido sem matemática e misconception vira ruído.
 Recomendação revista e registrada: corrigir CLASS-006 **antes** dos lotes restantes do
 Gate B e antes de qualquer linha de base, telemetria ou piloto. A linha de base é
 recurso não renovável e não se interpreta dado colhido sobre este defeito.
+
+### Reparo CLASS-005/006 verificado — regressão documental encontrada — 19/08/2026
+Relatório confirmado como **atual**: HEAD real é `799b3a4`, cadeia `25580ed` (vermelho,
+18:54) → `cf7885f` (reparo, 19:12) → `799b3a4` (final, 19:20). `main` intocada.
+
+Funcionalmente o reparo está correto: `sort(() => Math.random() - 0.5)` foi de 27 a 0,
+`src/utils/shuffle.ts` existe, a política tem teste de 122 linhas, e os guards de
+validação curricular do Composer sobreviveram com contagem idêntica.
+
+**Mas o reparo apagou toda a documentação de dois arquivos de runtime:** `Composer.ts`
+de 152 comentários para 0, `GameLoop.tsx` de 89 para 0 — cerca de 30 KB de rationale.
+No Composer, 18 linhas continham o padrão a corrigir e 762 foram removidas.
+
+Entre o perdido está a regra de ordem das tags de misconception, que existe justamente
+para impedir que alguém reordene a lista e degrade o Radar sem teste vermelho.
+
+É a mesma falha da W36 com `ficha_runtime_map.cjs`, e o corpo do PR #35 já a proíbe:
+cânone não se comprime. O CI verde é legítimo e simplesmente não cobre comentário.
+
+Recomendação: bloquear o Lote 8 até refazer o reparo como diff cirúrgico a partir de
+`66b40d0`, e criar portão que observe queda de densidade de documentação em runtime.
