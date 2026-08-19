@@ -129,3 +129,23 @@ Observação registrada para a próxima sessão: entre Gate A e Gate J há nove 
 trabalho interno. A linha de base **não depende de nenhum deles** — é em papel e pode
 ser coletada imediatamente. É o único item irreversível do quadro e o único cujo custo
 de adiamento é permanente.
+
+### Gate B · Lote 1 (N1) verificado — 19/08/2026
+SHA `ad1b239`, CI `32209683689` `completed/success` run 1526, head_sha conferido por API.
+Escopo: 3 arquivos documentais; nenhum arquivo de `src/`. AUDIT-ONLY respeitado.
+`main` intocada em `106dfe0`; PR #35 open+draft+unmerged.
+
+Amostragem independente de dois dos dez achados, contra a fonte executável:
+- **GAP-011** — `N1.13` aparece uma única vez em `curriculum/grafo_saga.yaml`, como nó
+  próprio com `prereqs: [N1.02, N1.04]`; nenhuma competência a lista como pré-requisito.
+  É folha. Achado real.
+- **GAP-007** — grafo declara `N1.12 faixa: F1`; a ficha viva declara `faixa: "F0/F1"`.
+  Divergência real.
+
+Dois de dois conferem. A auditoria é confiável.
+
+Contribuição registrada: taxonomia de **via de resolução** (`CODIGO` / `SIMULACAO` /
+`CRIANCA`) para os achados do Gate B. Sem ela, os ~70 achados projetados para os
+domínios restantes viram registro que só cresce. Consequência relevante: parte dos
+achados só fecha por observação de criança, o que torna o Gate J mecanismo de
+resolução do Gate B — e não apenas etapa final. Reforça a precondição de linha de base.

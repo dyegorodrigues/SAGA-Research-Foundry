@@ -39,10 +39,25 @@ production:
     gate_a: FECHADO-COM-RECIBO
     gates_b_to_j: NAO-INICIADO
     verified_by_this_session: git_e_actions_api
-  next_gate_per_issue_47_s15: >
-    Gate B — mega-auditoria curricular e de microprogressao. Achados vao para a
-    Issue #48. Recomendacao desta Foundry: executar em lotes por dominio, com
-    regra de parada, para nao virar monolito de semanas.
+  gate_b:
+    status: em_curso_por_lotes
+    lote_1:
+      dominio: N1
+      competencias: 13
+      sha: ad1b239457371a1f411001fd8521984eeadb94fe
+      ci: 32209683689
+      achados: 10
+      classe: todos HIPOTESE-A-PROVAR / CANDIDATA na Issue #48
+      audit_only: true
+      verificado_por_esta_sessao: >
+        HEAD, escopo de 3 arquivos documentais, CI por API, e amostragem de dois
+        achados contra a fonte: GAP-011 (N1.13 folha no DAG) e GAP-007 (faixa F1
+        no grafo vs F0/F1 na ficha viva). Ambos reais.
+    proximo_lote: N2
+    proposta_metodologica: >
+      Cada achado deve nascer com via de resolucao declarada — CODIGO, SIMULACAO
+      ou CRIANCA. Ver OBSERVATORIO_E_AUDITORIA.md. Achados de via CODIGO fecham
+      em paralelo sem depender de gate.
   baseline_pendente:
     status: DIVIDA-REGISTRADA
     bloqueia: Gate J

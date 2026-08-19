@@ -240,3 +240,34 @@ sério. Se o piloto do Gate J acontecer antes dela, o dado de partida some para
 sempre e nenhuma medida posterior de ganho é interpretável.
 
 É o único item desta frente com prazo, e ele é anterior ao Gate J.
+
+## Via de resolução — taxonomia proposta para os achados do Gate B
+
+Observação a partir do Lote 1 (N1, 13 competências, 10 achados, todos
+`HIPÓTESE-A-PROVAR`).
+
+Classificar o achado é metade do trabalho. A outra metade — que o Lote 1 ainda não
+faz — é dizer **como cada hipótese pode ser resolvida**. Sem isso, o Gate B tende a
+produzir ~70 hipóteses ao longo dos domínios restantes sem caminho de fechamento,
+e um registro que só cresce deixa de ser instrumento.
+
+Três vias, mutuamente exclusivas:
+
+| Via | Como fecha | Exemplos do Lote 1 |
+|---|---|---|
+| `CODIGO` | inspeção de fonte executável; fecha hoje, sem criança | GAP-007 (faixa grafo≠ficha), GAP-011 (N1.13 folha no DAG), GAP-003, GAP-008, GAP-010 |
+| `SIMULACAO` | campanha de Aprendiz Simulado — Gate G | achados sobre progressão, mastery frouxa, loop |
+| `CRIANCA` | só observação em piloto — Gate J | GAP-005, GAP-006, GAP-009 — "falta ponte/microtutorial" é hipótese sobre confusão, e confusão não se prova lendo código |
+
+Duas consequências:
+
+1. A via `CODIGO` fecha em paralelo, barata, sem depender de gate nenhum.
+   Dois achados do Lote 1 foram confirmados por inspeção direta em minutos.
+2. A via `CRIANCA` reposiciona o Gate J: ele não é só a última etapa de validação —
+   é o **mecanismo de resolução** de uma fração relevante da saída do Gate B.
+   Isso reforça a precondição de linha de base, que precede o Gate J.
+
+Proposta: cada achado do Lote 2 em diante nasce com `via` declarada. Achados de via
+`CODIGO` podem ser fechados sem esperar os gates seguintes.
+
+Sem autoridade sobre a Issue #47 — proposta metodológica, sujeita a D067.
