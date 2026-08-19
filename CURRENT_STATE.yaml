@@ -99,7 +99,27 @@ production:
         Escopo de 3 arquivos documentais, main intocada. A correcao aritmetica dele
         esta certa: 10 divergencias de campo em 9 competencias, porque GM.04 conta duas.
     progresso: "50 de 90 auditadas; faltam N6 N7 AL GE GM PE"
-    proximo_lote: N6
+    lote_6:
+      dominio: N6
+      competencias: 4
+      sha: 3c2ed8e44e096df154de3e9f89dbdfb21273c3c4
+      individuais: 3
+      classes: [CLASS-001, CLASS-002, CLASS-003, CLASS-004]
+      verificado_por_esta_sessao: >
+        Escopo de 3 arquivos documentais, main intocada. CLASS-004 confirmada na
+        fonte: decimalContract.ts linha 62 fixa quatro pares em que par[0] sempre
+        excede par[1] e par[0] sempre vai para a esquerda, tornando o ternario
+        codigo morto e a resposta sempre esquerda.
+    progresso: "54 de 90 auditadas; faltam N7 AL GE GM PE"
+    proximo_lote: N7
+    candidata_class_005:
+      achado_por: verificacao_externa_desta_sessao
+      fato: "sort(() => Math.random() - 0.5) em 26 pontos de src/"
+      medicao: "array de 4: elemento 0 cai na posicao 0 em 36% em vez de 25%; pior desvio 15,5 pp"
+      correcao_ja_existe: "shuffle Fisher-Yates em GameLoop.tsx:109"
+      impacto: "contamina evidencia de dominio, deteccao de misconception e a propria auditoria"
+      via: CODIGO
+      prioridade: antes_do_gate_j
     decisao_001_gm04:
       status: recomendacao_registrada_aguardando_dono
       diagnostico: >

@@ -460,3 +460,64 @@ uma ficha F1, com pré-requisito de numerais, ensinando frações de 15 minutos.
 
 **Continua sendo decisão do dono do projeto.** Esta é recomendação com evidência,
 não escolha feita. Sujeita a D067.
+
+## Candidata a CLASS-005 — embaralhamento enviesado em 26 pontos
+
+Encontrado ao verificar CLASS-004 no Lote 6, em 19/08/2026. Não é achado por
+competência: é infraestrutura transversal, e por isso o Gate B por domínio
+dificilmente o encontraria.
+
+### O fato
+
+`.sort(() => Math.random() - 0.5)` aparece **26 vezes** em `src/`:
+
+| Arquivo | Ocorrências |
+|---|---|
+| `src/curriculum/Composer.ts` | 18 |
+| `src/utils/generatorsVisual.ts` | 3 |
+| `src/curriculum/procedimentos/contagem20Contract.ts` | 2 |
+| `src/curriculum/fichas/dojo/sensei/dojo_{add,sub,mul,div}.ts` | 1 cada |
+
+Comparador aleatório em `sort` não produz permutação uniforme. Medido em Node,
+200 mil execuções, array de 4 opções:
+
+| | pos 0 | pos 1 | pos 2 | pos 3 |
+|---|---|---|---|---|
+| elemento 0 | **36,0%** | 17,3% | 15,7% | 31,0% |
+| elemento 1 | 14,0% | **39,2%** | 37,3% | 9,5% |
+| elemento 2 | 18,7% | 24,8% | 28,2% | 28,2% |
+| elemento 3 | 31,3% | 18,7% | 18,8% | 31,2% |
+
+Pior desvio do uniforme: **15,5 pontos percentuais**. Fisher-Yates nas mesmas
+condições: 0,2 pontos.
+
+`shuffle` em `src/components/GameLoop.tsx:109` **já é Fisher-Yates correto** e é
+usado no caminho de revisão. A correção existe no repositório; só não foi aplicada
+nos 26 pontos.
+
+### Por que importa neste produto especificamente
+
+Nos geradores, a resposta correta costuma ser construída como primeiro elemento do
+array de opções. Ela cai na primeira posição em ~36% das vezes em vez de 25% — uma
+criança que sempre toca na primeira opção acerta **44% mais** do que o acaso.
+
+Isso contamina três coisas que o SAGA usa como verdade:
+
+1. **evidência de domínio** — chutar por posição rende mais do que deveria, e a
+   coroa pode ser comprada por regularidade de interface;
+2. **detecção de misconception** — resposta escolhida por posição é registrada como
+   erro conceitual, virando falso positivo no Radar; é a Open Question 6 sendo
+   corrompida na origem;
+3. **a própria auditoria** — CLASS-004 caça viés posicional competência a
+   competência enquanto uma fonte sistêmica de viés posicional está em 26 pontos.
+
+### Fechamento
+
+Via `CODIGO`. Classe única, não 26 candidatas. Fecha substituindo por Fisher-Yates
+e travando com um teste que proíbe o padrão `sort` com comparador aleatório — mesmo
+formato do gate proposto para CLASS-001.
+
+Recomendação de prioridade: **antes do Gate J**. Um piloto infantil rodando sobre
+viés posicional produz dados de aprendizagem que não se pode interpretar.
+
+Sujeito a D067 — proposta, sem autoridade sobre a Issue #47.

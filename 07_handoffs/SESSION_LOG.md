@@ -219,3 +219,22 @@ informação.
 Também respondidas as outras duas decisões de §4: ficar com `#1e293b` (351 usos
 contra 49) e manter `Nunito` no texto por razão técnica de legibilidade infantil,
 reavaliando apenas `Fredoka` no display, que é a face que envelhece mal para os 11 anos.
+
+### Gate B · Lote 6 (N6) verificado + candidata a CLASS-005 — 19/08/2026
+Lote 6: SHA `3c2ed8e`, 3 arquivos documentais, `main` intocada. **CLASS-004 confirmada
+na fonte e é pior que o relatado**: `decimalContract.ts:62` fixa
+`[[0.5,0.25],[0.4,0.35],[0.7,0.62],[0.3,0.28]]`, sempre atribui `par[0]` à esquerda, e
+`par[0] > par[1]` nos quatro. O ternário `par[0] > par[1] ? "esquerda" : "direita"` é
+código morto — a resposta é **sempre** esquerda.
+
+Verificado também que a preocupação análoga no L5 **não** procede: `GameLoop.tsx:98`
+embaralha as opções, e o `shuffle` da linha 109 é Fisher-Yates correto.
+
+**Achado novo, transversal:** `.sort(() => Math.random() - 0.5)` em 26 pontos de `src/`,
+18 deles em `Composer.ts`. Medido em Node com 200 mil execuções sobre array de 4: o
+primeiro elemento cai na primeira posição em 36% em vez de 25%, pior desvio 15,5 pontos
+percentuais contra 0,2 do Fisher-Yates. Como a resposta correta costuma ser o primeiro
+elemento, chutar a primeira opção rende 44% acima do acaso.
+
+Contamina evidência de domínio, detecção de misconception e a própria premissa da
+CLASS-004. Registrado como candidata a CLASS-005, via CODIGO, prioridade antes do Gate J.
