@@ -521,3 +521,68 @@ Recomendação de prioridade: **antes do Gate J**. Um piloto infantil rodando so
 viés posicional produz dados de aprendizagem que não se pode interpretar.
 
 Sujeito a D067 — proposta, sem autoridade sobre a Issue #47.
+
+## CLASS-006 é muito maior que N7 — e é o achado mais grave até aqui
+
+Confirmada e **estendida** por verificação externa em 19/08/2026, HEAD `66b40d0`.
+
+### A cadeia, verificada ponta a ponta
+
+1. Dos 39 contratos especializados em `src/curriculum/procedimentos/` que montam
+   `opcoes`, **26 não contêm `shuffle`, `embaralh` nem `Math.random`**. Não é
+   embaralhamento enviesado — é ausência de embaralhamento.
+2. A helper desses contratos serializa a correta em primeiro lugar, literalmente:
+   `return [{ value: correta, ... }, ...erradas.map(...)]`.
+3. `GameLoopExerciseRenderer.tsx` e `ExerciseRenderer.tsx` **não embaralham**.
+4. O único `shuffle` do caminho de jogo está em `GameLoop.tsx:98`, dentro de
+   `if (!pure && bank.length && Math.random() < 0.35)` — ou seja, **apenas no
+   caminho de revisão**, que dispara em ~35% das vezes e puxa do banco.
+
+**Conclusão: em questão fresca, nesses 26 contratos, a alternativa correta é sempre
+a primeira opção.**
+
+### Os 26 contratos
+
+`angulos, areaF81, circuloAreas, conversaoUnidades, divisaoLonga, estatisticaChance,
+expressaoF77, fatoresRetangulos, horasMinutos, jornalTurma, linguagemLetras,
+mapaTesouro, mediaChance, multiplicarFracoes, operarNegativos, paresImpares,
+perimetro, planoCartesiano, poligonos, primosDivisores, problemasMedida, retaCompleta,
+solidosGeometricos, somaFracoes, volumePrismas, volumeVistas`
+
+Atravessa N4, N5, N6, N7, AL, GE, GM e PE. **O Gate B por domínio não encontraria
+isso**: o defeito não é de competência, é do contrato de opções.
+
+### Por que é mais grave que CLASS-005
+
+CLASS-005 desloca a probabilidade de 25% para 36%. CLASS-006 a leva a **100%**.
+
+Consequências diretas sobre o que o produto afirma medir:
+
+- **domínio pode ser obtido sem matemática** — tocar sempre na primeira opção
+  acerta tudo em questão fresca; a coroa é comprável por regularidade de interface;
+- **misconception vira ruído** — quem toca por posição não tem concepção errada, e
+  o Radar registra como se tivesse; é a Open Question 6 corrompida na origem;
+- **CLASS-003 e CLASS-004 ficam subestimadas** — elas mediam viés posicional caso a
+  caso enquanto isto vale para dois terços dos contratos.
+
+### Ressalva de escopo, para não superdimensionar
+
+Vale para os palcos que apresentam `opcoes` como lista de alternativas. Palcos
+manipulativos, em que a criança arrasta, toca no cenário ou produz a resposta, não
+consomem a ordem do array e não são atingidos. A extensão exata por palco ainda
+precisa ser levantada — mas a direção do erro já está provada.
+
+### Consequência para o cronograma
+
+Recomendação revista: **CLASS-006 deve ser corrigida antes de qualquer coisa,
+inclusive antes dos lotes restantes do Gate B.**
+
+O motivo não é o Gate B. É a linha de base. Coletar linha de base, telemetria ou
+piloto sobre um sistema em que a resposta certa é sempre a primeira produz dado
+que não se pode interpretar depois — e a linha de base é recurso não renovável.
+Auditar mais domínios enquanto isso é acumular achados sobre um alicerce que já se
+sabe torto.
+
+A correção é pequena: aplicar o Fisher-Yates que já existe em `GameLoop.tsx:109` na
+serialização das opções, e travar com teste que reprove corpus cuja resposta correta
+fique na mesma posição em todos os casos canônicos.

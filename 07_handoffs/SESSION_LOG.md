@@ -238,3 +238,23 @@ elemento, chutar a primeira opção rende 44% acima do acaso.
 
 Contamina evidência de domínio, detecção de misconception e a própria premissa da
 CLASS-004. Registrado como candidata a CLASS-005, via CODIGO, prioridade antes do Gate J.
+
+### Gate B · Lote 7 (N7) verificado — CLASS-006 é muito maior — 19/08/2026
+Escopo do lote correto: 3 commits, 3 arquivos documentais, `main` intocada.
+
+**Correção contra mim:** a contagem de `sort(() => Math.random() - 0.5)` é **27**, não
+26. Recontei e a sessão de produção está certa; eu somei errado a lista por arquivo.
+
+**CLASS-006 confirmada e estendida.** Não é fenômeno de N7: de 39 contratos
+especializados que montam `opcoes`, **26 não têm aleatorização alguma**, e a helper
+serializa a correta como primeiro elemento. Nenhum renderizador embaralha, e o único
+`shuffle` do caminho de jogo está restrito ao ramo de revisão de `GameLoop.tsx:94`
+(`Math.random() < 0.35`). Logo, **em questão fresca a resposta certa é sempre a
+primeira opção**, em contratos que atravessam N4, N5, N6, N7, AL, GE, GM e PE.
+
+Gravidade: CLASS-005 leva o acerto por posição de 25% para 36%; CLASS-006 leva a 100%.
+Domínio pode ser obtido sem matemática e misconception vira ruído.
+
+Recomendação revista e registrada: corrigir CLASS-006 **antes** dos lotes restantes do
+Gate B e antes de qualquer linha de base, telemetria ou piloto. A linha de base é
+recurso não renovável e não se interpreta dado colhido sobre este defeito.

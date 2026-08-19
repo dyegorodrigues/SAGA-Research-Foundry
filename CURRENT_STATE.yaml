@@ -111,10 +111,30 @@ production:
         excede par[1] e par[0] sempre vai para a esquerda, tornando o ternario
         codigo morto e a resposta sempre esquerda.
     progresso: "54 de 90 auditadas; faltam N7 AL GE GM PE"
-    proximo_lote: N7
+    lote_7:
+      dominio: N7
+      competencias: 2
+      sha: 66b40d0281288207a663960cbe827cc2a0ff1f40
+      individuais: 2
+      classes: [CLASS-001, CLASS-002, CLASS-003, CLASS-004, CLASS-005, CLASS-006]
+    progresso: "56 de 90 auditadas; faltam AL GE GM PE"
+    proximo_lote: AL
+    class_006_estendida_por_esta_sessao:
+      escopo_real: "26 de 39 contratos especializados, nao apenas N7"
+      cadeia_verificada: >
+        contratos sem shuffle + helper que serializa a correta primeiro +
+        renderizadores que nao embaralham + shuffle do GameLoop restrito ao caminho
+        de revisao (Math.random < 0.35). Em questao fresca a correta e sempre a
+        primeira opcao.
+      gravidade: "leva o acerto por posicao de 36% (CLASS-005) para 100%"
+      ressalva: "vale para palcos que listam opcoes; palcos manipulativos nao"
+      recomendacao: >
+        Corrigir ANTES dos lotes restantes do Gate B e antes de qualquer coleta de
+        linha de base ou telemetria. Dado colhido sobre este defeito nao e
+        interpretavel, e a linha de base e recurso nao renovavel.
     candidata_class_005:
       achado_por: verificacao_externa_desta_sessao
-      fato: "sort(() => Math.random() - 0.5) em 26 pontos de src/"
+      fato: "sort(() => Math.random() - 0.5) em 27 pontos de src/ (contagem corrigida pela sessao de producao; a minha de 26 estava errada)"
       medicao: "array de 4: elemento 0 cai na posicao 0 em 36% em vez de 25%; pior desvio 15,5 pp"
       correcao_ja_existe: "shuffle Fisher-Yates em GameLoop.tsx:109"
       impacto: "contamina evidencia de dominio, deteccao de misconception e a propria auditoria"
