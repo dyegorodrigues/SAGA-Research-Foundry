@@ -64,7 +64,26 @@ production:
         HEAD, escopo de 3 arquivos documentais, main intocada, e amostragem contra
         a fonte: GAP-021 (grafo F3 vs ficha F2) e GAP-018 (gN2_05 ignora lvl).
         Ambos reais. CI nao reconferido por API nesta rodada.
-    proximo_lote: N3
+    lote_3:
+      dominio: N3
+      competencias: 13
+      sha: 9c6b6d47cbe2bb74f2d342b2bbe01aa40260d84b
+      achados: 7
+      vias: "7 CODIGO / 0 SIMULACAO / 0 CRIANCA"
+      class_001:
+        classe: CONFIRMADO-ATUAL
+        via: CODIGO
+        casos: 18
+        verificado_por_esta_sessao: varredura_independente_bate_nome_por_nome
+    progresso: "33 de 90 competencias auditadas; faltam N4 N5 N6 N7 AL GE GM PE"
+    candidatas_abertas: 27
+    vias_acumuladas: "23 CODIGO / 1 SIMULACAO / 3 CRIANCA"
+    proximo_lote: N4
+    lacuna_estrutural_do_plano: >
+      A secao 15 da Issue #47 nao define fase de reparo para a saida do Gate B.
+      Proposta registrada: Gate B-linha entre B e C, com CODIGO fechando primeiro,
+      SIMULACAO migrando para Gate G e CRIANCA virando roteiro do Gate J. Nenhuma
+      candidata CODIGO deve seguir aberta quando o piloto comecar.
     achado_estrutural_desta_sessao: >
       4 de 8 geradores em src/utils/generatorsF2.ts declaram lvl e ignoram:
       gN3_11, gN3_12, gN2_05, gN3_13. Tres sao N3, dominio do Lote 3. Deve ser

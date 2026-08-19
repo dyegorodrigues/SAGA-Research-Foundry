@@ -165,3 +165,15 @@ o que motivou varredura. Em `generatorsF2.ts`, 4 de 8 geradores declaram `lvl` e
 ignoram: `gN3_11`, `gN3_12`, `gN2_05`, `gN3_13`. Três são N3 — domínio do Lote 3.
 É classe, não quatro candidatas. Fecha com um teste que proíbe o padrão.
 `src/utils/generators.ts` usa outra estrutura e não foi mapeado.
+
+### Gate B · Lote 3 (N3) verificado — 19/08/2026
+SHA `9c6b6d4`, 3 arquivos documentais, nenhum `src/`, `main` intocada.
+- **GAP-026** confirmado: YAML exige `N3.10 prereqs [N3.03, N3.04]`; ficha TS declara `["N3.03"]`.
+- **CLASS-001** confirmado por varredura independente: 18 geradores, mesmos nomes,
+  mesmos arquivos. 48 geradores recebem `lvl`, 30 usam, 18 ignoram — 37,5%.
+  `generatorsVisual.ts` ignora em 6 de 6.
+
+Registrada a lacuna estrutural: o plano não tem fase de reparo para a saída do Gate B.
+27 candidatas abertas, 23 delas via `CODIGO`, e a projeção para os 57 competências
+restantes é de mais 40–50. Sem Gate B′, o piloto infantil rodaria sobre defeitos
+confirmados e a observação da criança ficaria ininterpretável.

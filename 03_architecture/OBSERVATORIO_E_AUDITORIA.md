@@ -309,3 +309,56 @@ padrão correto antes de qualquer afirmação sobre ele.
 
 Proposta: o Lote 3 deve começar verificando se o padrão se estende, e o registro
 deve tratá-lo como classe. Sujeito a D067 — sem autoridade sobre a Issue #47.
+
+## CLASS-001 confirmado por varredura independente — e a lacuna que ele expõe
+
+Varredura própria no HEAD `9c6b6d4`, com parser que cobre `const NOME = (args) =>`
+e `function NOME(args)`, sobre os quatro arquivos de geradores:
+
+| Arquivo | com `lvl` | usam | ignoram |
+|---|---|---|---|
+| `generators.ts` | 26 | 22 | 4 |
+| `generatorsF1.ts` | 8 | 4 | 4 |
+| `generatorsF2.ts` | 8 | 4 | 4 |
+| `generatorsVisual.ts` | 6 | **0** | **6** |
+| **total** | **48** | 30 | **18** |
+
+Bate exatamente com o CLASS-001 do Lote 3, nome por nome. **37,5% dos geradores que
+recebem nível descartam o nível.** `generatorsVisual.ts` não tem diferenciação de
+nível alguma — 6 de 6.
+
+### A lacuna estrutural do plano
+
+Gate B produz achados e é AUDIT-ONLY por desenho, o que está certo. Mas a §15 da
+Issue #47 encadeia B → C → D → E → … e **não define fase de reparo para a saída do
+Gate B**.
+
+Estado após três lotes (33 de 90 competências):
+
+| | |
+|---|---|
+| candidatas abertas | 27 |
+| via `CODIGO` | 23 |
+| via `SIMULACAO` | 1 |
+| via `CRIANCA` | 3 |
+| classes confirmadas | 1 (CLASS-001, 18 casos) |
+
+Extrapolando a taxa observada, os ~57 competências restantes devem gerar algo entre
+40 e 50 candidatas adicionais. Sem fase de reparo declarada, o Gate J — piloto com
+criança — aconteceria sobre um app com dezenas de defeitos **conhecidos e
+confirmados**, o que invalida a leitura do piloto: não se distingue confusão da
+criança de defeito já catalogado.
+
+### Proposta — Gate B′ entre B e C
+
+Fase de reparo explícita, dividida por via:
+
+1. **`CODIGO` primeiro.** Fecha sem criança e sem gate. Inclui CLASS-001, que fecha
+   como classe: um teste estático que reprova gerador declarando `lvl` sem uso, com
+   `_lvl` como supressão explícita e wrapper que encaminha passando.
+2. **`SIMULACAO`** migra para o Gate G como entrada, não como dívida solta.
+3. **`CRIANCA`** migra para o Gate J como roteiro de observação — vira o que se
+   olha no piloto, em vez de ficar esperando.
+
+Regra: nenhuma candidata de via `CODIGO` deve continuar aberta quando o Gate J
+começar. Sujeito a D067 — proposta, sem autoridade sobre a Issue #47.
