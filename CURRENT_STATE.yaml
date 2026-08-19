@@ -89,7 +89,25 @@ production:
         confirmada: unlockEngine usa GrafoSaga derivado do DAG, nao a ficha; nao ha
         desbloqueio precoce.
     progresso: "45 de 90 auditadas; faltam N5 N6 N7 AL GE GM PE"
-    proximo_lote: N5
+    lote_5:
+      dominio: N5
+      competencias: 5
+      sha: fac6abb79200e3ae45493d17ea09f9bca41689e4
+      individuais: 3
+      classes_confirmadas: [CLASS-001, CLASS-002, CLASS-003]
+      verificado_por_esta_sessao: >
+        Escopo de 3 arquivos documentais, main intocada. A correcao aritmetica dele
+        esta certa: 10 divergencias de campo em 9 competencias, porque GM.04 conta duas.
+    progresso: "50 de 90 auditadas; faltam N6 N7 AL GE GM PE"
+    proximo_lote: N6
+    decisao_001_gm04:
+      status: recomendacao_registrada_aguardando_dono
+      diagnostico: >
+        A ficha GM.04 absorveu conteudo de minutos que pertence a GM.06 e reescreveu
+        prereqs e faixa para justificar o invasor. O metadado e sintoma, nao causa.
+      recomendacao: >
+        O DAG esta certo. Devolver a ficha ao escopo de hora cheia primeiro, so entao
+        alinhar faixa F1 e prereqs N1.06. Alinhar so o metadado seria pior que nada.
     conformance_ficha_dag:
       varrido: 90_de_90_competencias
       prereqs_divergentes: 6

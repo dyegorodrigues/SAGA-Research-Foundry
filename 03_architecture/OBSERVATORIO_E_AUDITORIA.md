@@ -410,3 +410,53 @@ liberação precoce hoje.
 Proposta: unificar CLASS-002, GAP-026, GAP-007, GAP-021 e o caso `GM.04` numa única
 classe de conformance ficha↔DAG, fechável por um teste que compara os dois. `GM.04`
 sai dessa classe e vira decisão pedagógica própria. Sujeito a D067.
+
+## DECISAO-001 / GM.04 — recomendação com diagnóstico
+
+A divergência de metadado é sintoma. A causa está no conteúdo.
+
+| | DAG | Ficha |
+|---|---|---|
+| nome | "Horas (ponteiros e digital)" | "Relógio: **Horas e Minutos**" |
+| faixa | F1 | F2 |
+| prereqs | `[N1.06]` — Numerais 0-10 | `[N2.01, AL.01]` |
+
+Os micros da ficha GM.04:
+
+- `a` — "ler **horas exatas** no relógio analógico" → é a GM.04 do DAG;
+- `b` — "avançar o tempo em **frações de 15 minutos**" → é território da GM.06.
+
+E a GM.06 já existe no DAG como *"Horas e minutos; duração"*, F2, prereqs
+`[GM.04, AL.03]`, com ficha viva ensinando *"cada número do mostrador vale 5
+minutos"* e *"descobrir uma duração"*.
+
+### Diagnóstico
+
+A ficha GM.04 absorveu conteúdo de minutos que pertence à GM.06, e então
+reescreveu os próprios prereqs e a faixa para justificar o conteúdo invasor. Por
+isso os prereqs ficaram disjuntos: `[N2.01, AL.01]` sustenta *contar de 5 em 5*,
+não *ler a hora cheia*.
+
+### Recomendação
+
+**O DAG está certo.** Ler hora cheia num relógio analógico exige reconhecer os
+numerais de 1 a 12 e distinguir dois ponteiros — `N1.06` basta, e F1 é a faixa
+correta. Uma criança de 5 anos aprende "o ponteiro curto está no 3, são 3 horas"
+sem saber dezena nem contar de 5 em 5.
+
+Ler **minutos** é outra competência: exige contagem de 5 em 5 até 60, ou seja,
+estrutura decimal e salto — que é exatamente o que a GM.06 declara com
+`[GM.04, AL.03]`.
+
+Ação proposta, em três passos e nesta ordem:
+
+1. Devolver a ficha GM.04 ao escopo de hora cheia — remover o micro de frações
+   de 15 minutos, que já tem casa na GM.06.
+2. Só então alinhar `faixa: "F1"` e `prereqs: ["N1.06"]` ao DAG.
+3. Verificar se a GM.06 precisa absorver o micro removido ou se já o cobre.
+
+Fazer só o passo 2 seria pior que não fazer nada: alinharia o metadado e deixaria
+uma ficha F1, com pré-requisito de numerais, ensinando frações de 15 minutos.
+
+**Continua sendo decisão do dono do projeto.** Esta é recomendação com evidência,
+não escolha feita. Sujeita a D067.
