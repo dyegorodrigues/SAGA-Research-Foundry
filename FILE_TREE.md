@@ -15,6 +15,7 @@
 - `03_architecture/FALSIFICATION_GATES.md`
 - `03_architecture/THINKING_EVIDENCE.md`
 - `03_architecture/OBSERVATORIO_E_AUDITORIA.md`
+- `03_architecture/PALETA_DE_TRILHAS.md`
 - `04_curriculum_design/EXPERIENCE_GRAMMAR.md`
 - `04_curriculum_design/MECHANICS.md`
 - `04_curriculum_design/SAMPLE_EXPERIENCES.md`

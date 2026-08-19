@@ -195,3 +195,27 @@ competência pode ser ensinada — não higiene de metadado.
 
 Proposta registrada: unificar CLASS-002 + GAP-026 + GAP-007 + GAP-021 numa classe única
 fechável por um teste ficha↔DAG, e tratar `GM.04` como decisão à parte.
+
+### Paleta de trilhas — decisão pendente de §4 resolvida por prova — 19/08/2026
+`03_architecture/PALETA_DE_TRILHAS.md`. Também verificado o Lote 5 (N5): escopo de 3
+arquivos documentais, `main` intocada, e a correção aritmética dele está certa — são
+10 divergências de campo em 9 competências, porque `GM.04` responde por duas.
+
+O documento de design pedia escolher entre "estender a paleta para 11 tons" ou
+"aceitar compartilhamento". Varredura dos 360° mostra que a primeira opção é
+impossível: com erro, acerto e as quatro cores de operação travadas, restam **3
+matizes livres** (79°, 246°, 316°) para 11 trilhas. As 4 colisões observadas eram
+sintoma, não descuido.
+
+Proposta: matiz passa a identificar **família** e não trilha. Cinco famílias cabem nas
+cinco vagas — três matizes livres, o reuso das cores de operação e um neutro.
+Dentro da família, claridade distingue. Todas as 11 cores ≥4,5:1 no branco, mínimo
+4,91:1, sem colisão com operação nem feedback.
+
+Limite registrado: 11 trilhas distinguíveis sob daltonismo é impossível. Vale para
+trilha a mesma regra já travada para operação — cor é reforço, nome e ícone são a
+informação.
+
+Também respondidas as outras duas decisões de §4: ficar com `#1e293b` (351 usos
+contra 49) e manter `Nunito` no texto por razão técnica de legibilidade infantil,
+reavaliando apenas `Fredoka` no display, que é a face que envelhece mal para os 11 anos.
