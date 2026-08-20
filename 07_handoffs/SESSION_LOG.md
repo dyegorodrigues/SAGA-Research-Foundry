@@ -298,3 +298,24 @@ deleções só no Composer no caminho anterior.
 Causa raiz registrada: o agente regenera arquivos em vez de aplicar patch; comentário
 não é testado; nenhum portão observa densidade documental. Só o terceiro item é
 acionável por gate, e é o que falta.
+
+### Catraca documental verificada e ampliada — 19/08/2026
+Restauração `658011a` confirmada integrada por fast-forward, sem force. Linha viva
+em `a043861`, `main` intocada.
+
+A catraca criada pela sessão de produção **funciona** — testada por mutação nesta
+sessão nas três direções: limpa passa, remoção reprova `152 → 151`, acréscimo sem
+baseline reprova `152 → 153`. Autoridade de evidências resolvida corretamente em
+`src/constants/evidencias.ts`, sem caminho inventado.
+
+**Buraco:** a lista era fixa com 6 caminhos. Existem 64 arquivos de runtime com 40+
+linhas de comentário e **60 estavam desprotegidos** — inclusive `emojiRowProcedure.ts`
+(300) e `emojiRowContract.ts` (264), os dois mais documentados do projeto, com o dobro
+do `Composer.ts`. E `composerCanaryIds.ts` (54), apesar de o canário constar da
+proposta de cânone do PR #35.
+
+Ampliada para descoberta automática: todo runtime não-teste com ≥20 comentários entra,
+mais cânone nominal sempre. **6 arquivos / 698 linhas → 108 arquivos / 7.468 linhas.**
+Quatro invariantes verificados por mutação. `tsc` limpo, 248 arquivos e 3.463 testes.
+
+Commit `c4fd3f2`, fast-forward sobre `a043861`.

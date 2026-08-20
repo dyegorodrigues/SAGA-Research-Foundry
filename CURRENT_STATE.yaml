@@ -145,7 +145,24 @@ production:
           main_tocada: false
           verificacao: "tsc limpo; build verde; 247 arquivos e 3459 testes passando; Matrix 75/15/0/90/11"
           diff_contra_66b40d0: "33 insercoes / 50 delecoes nos dois arquivos"
-          pendente: catraca_de_densidade_documental
+          integrada_na_linha_viva: true
+    catraca_documental:
+      criada_por: sessao_de_producao
+      sha: a043861
+      verificada_por_mutacao_nesta_sessao: true
+      cobertura_original: "6 arquivos / 698 linhas"
+      buraco: >
+        Lista fixa deixava 60 de 64 arquivos com 40+ comentarios sem protecao,
+        incluindo emojiRowProcedure (300) e emojiRowContract (264), os dois mais
+        documentados do projeto, e composerCanaryIds (54).
+      ampliacao:
+        commit: c4fd3f2
+        branch: claude/saga-empresa-educacional-visao-ty4jpy
+        base: a043861 (fast-forward)
+        cobertura: "108 arquivos / 7.468 linhas"
+        metodo: descoberta_automatica_limiar_20_mais_canone_nominal
+        invariantes: 4
+        verificacao: "tsc limpo; 248 arquivos e 3463 testes; 4 mutacoes"
     class_006_estendida_por_esta_sessao:
       escopo_real: "26 de 39 contratos especializados, nao apenas N7"
       cadeia_verificada: >

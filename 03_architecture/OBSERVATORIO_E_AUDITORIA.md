@@ -741,3 +741,62 @@ autoridade de evidências — cujo caminho precisa ser resolvido no tree, porque
 `evidencias.ts` não existe nos caminhos óbvios.
 
 Sem esse portão, a próxima regeneração repete tudo. Sujeito a D067.
+
+## Catraca documental — verificada por mutação e ampliada 18×
+
+Verificação e melhoria executadas em 19/08/2026 sobre o HEAD `a043861`.
+
+### O que a sessão de produção entregou, e está correto
+
+`src/governance/documentacaoRuntime.test.ts` + baseline JSON. Testado por mutação
+nesta sessão, com dependências reais, nas três direções declaradas:
+
+| Mutação | Resultado |
+|---|---|
+| estado limpo | passa |
+| remover 1 comentário do Composer | reprova — `152 → 151` |
+| acrescentar 1 sem atualizar baseline | reprova — `152 → 153`, pedindo o novo piso |
+| restaurar | passa |
+
+A autoridade de evidências foi resolvida corretamente: `src/constants/evidencias.ts`
+existe e tem 204 linhas de comentário. Nenhum caminho inventado. E a restauração
+`658011a` foi integrada por fast-forward, sem force.
+
+### O buraco encontrado
+
+A catraca nomeava **6 arquivos à mão**. Varredura do runtime: 64 arquivos com 40+
+linhas de comentário, **60 desprotegidos**.
+
+Os dois arquivos mais documentados do projeto estavam fora: `emojiRowProcedure.ts`
+com 300 linhas e `emojiRowContract.ts` com 264 — o dobro do `Composer.ts`, que
+estava protegido. O diretório `procedimentos/` inteiro, onde mora o rationale
+pedagógico de cada competência, não tinha portão. `composerCanaryIds.ts` também
+estava fora, com 54 linhas.
+
+> Lista escrita à mão protege o que alguém lembrou de escrever. Foi assim que a W36
+> aconteceu, e a catraca criada para impedir a reincidência herdou o mesmo formato.
+
+### A correção
+
+Descoberta automática: todo arquivo de runtime não-teste com **≥20 linhas de
+comentário** precisa ter piso registrado. Cânone nominal fica protegido sempre,
+mesmo caindo abaixo do limiar — sem isso, esvaziar um arquivo até 19 linhas o
+removeria do portão.
+
+Cobertura: **6 arquivos / 698 linhas → 108 arquivos / 7.468 linhas.**
+
+Quatro invariantes, todos verificados por mutação:
+
+1. arquivo documentado fora da baseline reprova, nomeando caminho e contagem;
+2. baseline apontando para arquivo inexistente reprova;
+3. perda de comentário reprova, mostrando anterior → atual;
+4. ganho sem atualizar baseline reprova, para o piso subir junto.
+
+Mutações executadas: remover comentário de `emojiRowProcedure.ts`, antes sem
+proteção alguma, passou a reprovar em `300 → 299`; arquivo novo com 25 linhas de
+comentário reprovou por estar fora da catraca.
+
+Verificado: `tsc --noEmit` limpo, **248 arquivos / 3.463 testes passando**.
+
+Commit `c4fd3f2` em `claude/saga-empresa-educacional-visao-ty4jpy`, fast-forward
+sobre `a043861`. Linha viva e `main` intocadas.
