@@ -888,3 +888,62 @@ esquecimento.
 
 **Enquanto isto não fechar, nenhuma medição de aprendizagem é interpretável** — nem
 linha de base, nem telemetria, nem piloto.
+
+## CLASS-006 fechada — execução e três correções no próprio gate
+
+Executada nesta sessão sobre o vermelho `ac855a1`, que a sessão de produção
+materializou antes de ficar sem contexto. Commit `c4b8c17` na branch
+`claude/saga-empresa-educacional-visao-ty4jpy`. Linha viva e `main` intocadas.
+
+### A correção do produto
+
+Default invertido: **embaralhar sempre**. `CLASS_006_ORDEM_SEMANTICA` guarda
+exceção explícita e justificada — e **não dispensa a medição**. Quem está na
+exceção continua sendo medido e reprova se concentrar. Esquecer de listar deixa de
+abrir buraco silencioso e passa a produzir teste vermelho.
+
+Única exceção registrada: **N1.05**, cujas alternativas são os índices dos dois
+grupos do palco `quantidade`, respondidos por toque na cena e não em lista. Medida
+em 200 amostras por nível, já se distribui em torno de 50% nos cinco.
+
+### Três defeitos encontrados no gate ao usá-lo
+
+O regression-first estava certo na concepção e errado em três detalhes que só
+apareceram ao rodar contra o produto corrigido.
+
+**1. Ponto cego de formato.** O helper de identidade só conhecia `value`.
+`shapecanvas` serializa `figura`, então **GE.02 saía silenciosamente da amostra** —
+um ponto cego dentro do portão criado justamente para não ter pontos cegos. Chave
+desconhecida continua reprovando, para formato novo não sumir.
+
+**2. Limiar fixo é errado nas duas direções.** 60% é severo demais para 2
+alternativas, onde o acaso ultrapassa isso com frequência — foi o que produziu o
+falso positivo de `N1.05/L3` a 61,7%. E é frouxo demais para 4, onde 55% já é o
+dobro do esperado e passaria batido. Passou a ser **`1/k + 4σ`**.
+
+**3. Tamanhos misturados.** O mesmo par gera listas de tamanhos diferentes quando
+alternativas duplicadas colapsam: `AL.02/L5` alterna entre 2 e 4 alternativas,
+`N4.01/L1` entre 2, 3 e 4. Medir tudo junto sub-representa as últimas posições e
+inventa viés. A medição passou a ser **por número de alternativas**.
+
+Os três juntos: sem o 1, uma competência inteira não era medida; sem o 2 e o 3, o
+gate produzia falso positivo e falso negativo ao mesmo tempo.
+
+### Verificação
+
+| | |
+|---|---|
+| `tsc --noEmit` | limpo |
+| `npm run build` | verde |
+| Suíte | **248 arquivos / 3.437 testes** |
+| Gate por mutação | verde; vermelho ao desligar o embaralhamento |
+| Medição independente | 288 pares, **zero concentração real** |
+| `AL.02`, última suspeita | 3.000 amostras/nível: 52,0/48,0 e 48,8/51,2 — variação normal |
+
+`composerCanary.ts` entrou na catraca documental com piso 32.
+
+### O que isso destrava
+
+Era o portão que separava o projeto de conseguir medir. Com o gabarito distribuído,
+acerto volta a significar matemática, misconception volta a significar concepção
+errada, e **linha de base, telemetria e piloto passam a ser interpretáveis**.

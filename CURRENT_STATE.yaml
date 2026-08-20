@@ -146,7 +146,23 @@ production:
           por vez; a refutacao estava errada.
       correcao: embaralhar_por_default_com_excecao_explicita
       portao: medicao_e_nao_lista
-      bloqueia: [linha_de_base, telemetria, gate_j]
+      status: FECHADA_POR_ESTA_SESSAO
+      correcao:
+        commit: c4b8c17
+        branch: claude/saga-empresa-educacional-visao-ty4jpy
+        base: ac855a1
+        default: embaralhar_sempre
+        excecao_unica: N1.05
+        excecao_nao_dispensa_medicao: true
+        defeitos_corrigidos_no_gate:
+          - "ponto cego de formato: helper so conhecia value; GE.02 saia da amostra"
+          - "limiar fixo 60% severo para k=2 e frouxo para k=4; virou 1/k + 4 sigma"
+          - "tamanhos de lista misturados criavam falso positivo; medicao agrupada por k"
+        verificacao: >
+          tsc limpo, build verde, 248 arquivos e 3437 testes, gate vermelho por
+          mutacao ao desligar o embaralhamento, medicao independente com 288 pares
+          e zero concentracao, AL.02 medida com 3000 amostras dentro do normal.
+      destrava: [linha_de_base, telemetria, gate_j]
     reparo_class_005_006:
       sha_vermelho: 25580edc3beafd7167c779eff17b02fd3173ecd1
       sha_verde: 799b3a4082b75811632216e21ab594d9625fa93b

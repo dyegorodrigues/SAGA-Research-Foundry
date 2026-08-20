@@ -345,3 +345,30 @@ foram criadas para impedir a falha anterior.
 Correção: embaralhar por default com exceção explícita, e o portão passa a ser
 **medição, não lista**. Enquanto não fechar, nenhuma medição de aprendizagem é
 interpretável.
+
+### CLASS-006 FECHADA — 19/08/2026
+A sessão de produção materializou o regression-first vermelho `ac855a1` e ficou sem
+contexto antes da correção. Esta sessão executou.
+
+Commit `c4b8c17`. Default invertido para **embaralhar sempre**;
+`CLASS_006_ORDEM_SEMANTICA` guarda exceção justificada e **não dispensa medição**.
+Única exceção: `N1.05`, alternativas são índices dos dois grupos do palco, medida em
+50/50 nos cinco níveis.
+
+**Três defeitos no próprio gate, encontrados ao usá-lo:**
+1. helper de identidade só conhecia `value`; `shapecanvas` usa `figura`, e **GE.02
+   saía silenciosamente da amostra** — ponto cego dentro do portão anti-ponto-cego;
+2. limiar fixo de 60% é severo demais para k=2 (falso positivo em `N1.05/L3` a
+   61,7%) e frouxo demais para k=4 (55% passaria sendo o dobro do esperado);
+   virou `1/k + 4σ`;
+3. o mesmo par gera listas de tamanhos diferentes quando duplicatas colapsam
+   (`AL.02/L5` alterna 2 e 4); medir junto sub-representa as últimas posições e
+   inventa viés. Medição agrupada por número de alternativas.
+
+Verificado: `tsc` limpo, build verde, **248 arquivos / 3.437 testes**, gate vermelho
+por mutação ao desligar o embaralhamento, medição independente com 288 pares e zero
+concentração, e `AL.02` — última suspeita — medida com 3.000 amostras por nível em
+52,0/48,0 e 48,8/51,2, dentro de variação normal.
+
+Com isso, acerto volta a significar matemática e misconception volta a significar
+concepção errada. Linha de base, telemetria e piloto passam a ser interpretáveis.
