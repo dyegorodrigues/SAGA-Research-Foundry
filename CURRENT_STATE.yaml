@@ -118,7 +118,35 @@ production:
       individuais: 2
       classes: [CLASS-001, CLASS-002, CLASS-003, CLASS-004, CLASS-005, CLASS-006]
     progresso: "56 de 90 auditadas; faltam AL GE GM PE"
-    proximo_lote: AL_bloqueado_por_regressao
+    lote_8:
+      dominio: AL
+      competencias: 8
+      sha: f1f61ea3a87633ad227060957cf2523b2e5fc05a
+      individuais: 4
+    progresso: "64 de 90 auditadas; faltam GE GM PE"
+    proximo_lote: GE
+    class_006_NAO_fechada:
+      medido_por: esta_sessao
+      head: f1f61ea
+      metodo: "generateRegisteredFichaQuestion por canario ativo, niveis 1-5, 120 amostras"
+      pares_medidos: 288
+      pares_concentrados: 75
+      competencias_afetadas: 18
+      reportado_pelo_lote_8: 4
+      causa: >
+        composerCanary.ts embaralha apenas se o id estiver em CLASS_006_FRESH_OPTION_IDS,
+        allowlist fixa de 25. Todo o resto passa direto.
+      casos_criticos:
+        N6_01: >
+          Fora da allowlist. E a competencia que originou a CLASS-004. Mede 100 por
+          cento na posicao 0 nos cinco niveis. O defeito nunca foi corrigido.
+        N2_06: >
+          Refutada como falso positivo sob argumento de alternancia entre niveis. A
+          medicao mostra posicao fixa DENTRO de cada nivel. A crianca pratica um nivel
+          por vez; a refutacao estava errada.
+      correcao: embaralhar_por_default_com_excecao_explicita
+      portao: medicao_e_nao_lista
+      bloqueia: [linha_de_base, telemetria, gate_j]
     reparo_class_005_006:
       sha_vermelho: 25580edc3beafd7167c779eff17b02fd3173ecd1
       sha_verde: 799b3a4082b75811632216e21ab594d9625fa93b

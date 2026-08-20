@@ -800,3 +800,91 @@ Verificado: `tsc --noEmit` limpo, **248 arquivos / 3.463 testes passando**.
 
 Commit `c4fd3f2` em `claude/saga-empresa-educacional-visao-ty4jpy`, fast-forward
 sobre `a043861`. Linha viva e `main` intocadas.
+
+## CLASS-006 NÃO está fechada — medição empírica das 75 competências
+
+Medido em 19/08/2026 sobre o HEAD `f1f61ea`, com dependências reais.
+Método: `generateRegisteredFichaQuestion(id, nivel)` para cada canário ativo,
+níveis 1–5, 120 amostras por par, registrando a posição do gabarito entre as
+opções.
+
+### Resultado
+
+| | |
+|---|---|
+| pares competência/nível medidos | 288 |
+| pares com gabarito concentrado ≥60% numa posição | **75** |
+| competências afetadas | **18** |
+
+O Lote 8 reportou resíduo em quatro (`AL.01-L5`, `AL.03`, `AL.05`, `AL.08`).
+São dezoito, e a maioria está em **100%** — posição inteiramente determinística.
+
+```
+AL.01  L5:p0=100%
+AL.02  L1..L4:p0=100%
+AL.03  L1:p1=68% L2..L4:p1=100% L5:p2=63%
+AL.05  L1..L5:p0=100%
+AL.08  L1..L5:p0=100%
+GE.04  L3:p0=64%
+N1.01  L1:p1=100% L2:p0=100% L3:p2=61%
+N2.06  L1:p0=100% L2:p1=100% L3:p0=100% L4:p1=100% L5:p0=100%
+N3.02  L1..L5:p0=100%
+N4.01  L1..L5:p0=100%
+N4.12  L1..L5:p0=100%
+N5.01  L1:p0=61% L2,L3,L5:p0=100%
+N5.02  L1,L2:p0=100%
+N5.03  L1,L2:p0=100% L3:p2=100% L4:p1=100% L5:p1=69%
+N6.01  L1..L5:p0=100%
+N6.02  L1..L5:p0=100%
+N6.03  L1..L5:p0=100%
+N6.04  L1..L5:p0=100%
+```
+
+### A causa, escrita no código
+
+`src/curriculum/motores/composerCanary.ts`:
+
+```ts
+return CLASS_006_FRESH_OPTION_IDS.has(id) ? shuffleFreshStageOptions(question) : question
+```
+
+O embaralhamento só ocorre para os **25 ids de uma allowlist fixa**. Todo o resto
+passa direto. O reparo é correto para quem está na lista e inexistente para quem não
+está.
+
+### Dois casos que provam a gravidade
+
+**`N6.01` não está na allowlist.** É exatamente a competência que originou a
+CLASS-004 — comparar decimais, com o gabarito sempre à esquerda. O defeito foi
+achado, confirmado, agravado por verificação externa, escalado a classe própria — e
+o reparo não o cobriu. Mede 100% na posição 0 nos cinco níveis.
+
+**`N2.06` foi refutada como falso positivo** sob o argumento de que o gabarito
+alterna de posição entre os níveis. A medição mostra `L1:p0=100%`, `L2:p1=100%`,
+`L3:p0=100%`, `L4:p1=100%`, `L5:p0=100%`. Dentro de cada nível a posição é fixa. Uma
+criança pratica **um nível por vez**: alternar entre níveis não protege ninguém. A
+refutação estava errada.
+
+### O padrão, pela terceira vez
+
+1. W36 — `ficha_runtime_map.cjs` comprimido, cânone nominal por lista;
+2. catraca documental — 6 caminhos escritos à mão, 60 arquivos de fora;
+3. CLASS-006 — allowlist de 25 ids, 18 competências de fora.
+
+> **Lista escrita à mão protege o que alguém lembrou de escrever.** É o mesmo
+> mecanismo de falha em três lugares diferentes, e duas dessas listas foram criadas
+> justamente para impedir a falha anterior.
+
+### A correção
+
+Inverter o padrão: **embaralhar por default**, com exceção explícita e justificada
+para palcos em que a ordem é semântica — e mesmo nesses, garantir que o gabarito
+não fique invariável dentro de um nível.
+
+O portão deve ser a medição, não a lista: gerar os casos canônicos de cada
+competência ativa em todos os níveis, com N amostras, e reprovar quando o gabarito
+se concentrar acima de um limiar numa posição. Isso não pode ser burlado por
+esquecimento.
+
+**Enquanto isto não fechar, nenhuma medição de aprendizagem é interpretável** — nem
+linha de base, nem telemetria, nem piloto.

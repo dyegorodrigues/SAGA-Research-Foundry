@@ -319,3 +319,29 @@ mais cânone nominal sempre. **6 arquivos / 698 linhas → 108 arquivos / 7.468 
 Quatro invariantes verificados por mutação. `tsc` limpo, 248 arquivos e 3.463 testes.
 
 Commit `c4fd3f2`, fast-forward sobre `a043861`.
+
+### Gate B · Lote 8 (AL) verificado — CLASS-006 NÃO está fechada — 19/08/2026
+Lote 8 correto: HEAD `f1f61ea`, 3 arquivos documentais, `main` intocada, e a
+ampliação da catraca (`c4fd3f2`) foi integrada por fast-forward.
+
+**Mas medi a CLASS-006 empiricamente** nas 75 competências ativas, níveis 1–5, 120
+amostras por par, no HEAD `f1f61ea`: **288 pares medidos, 75 concentrados ≥60% numa
+posição, 18 competências afetadas** — o Lote 8 reportou 4. A maioria em **100%**.
+
+Causa no código: `composerCanary.ts` embaralha apenas se o id estiver em
+`CLASS_006_FRESH_OPTION_IDS`, allowlist fixa de 25. O resto passa direto.
+
+Dois casos decisivos:
+- **`N6.01` está fora da allowlist** e é justamente a competência que originou a
+  CLASS-004. Mede 100% na posição 0 nos cinco níveis. O defeito nunca foi corrigido.
+- **`N2.06`** foi refutada como falso positivo por "alternar entre níveis". A medição
+  mostra posição fixa dentro de cada nível; a criança pratica um nível por vez. A
+  refutação estava errada.
+
+Terceira ocorrência do mesmo padrão: W36 (cânone nominal por lista), catraca
+documental (6 caminhos à mão) e agora CLASS-006 (allowlist de 25). Duas dessas listas
+foram criadas para impedir a falha anterior.
+
+Correção: embaralhar por default com exceção explícita, e o portão passa a ser
+**medição, não lista**. Enquanto não fechar, nenhuma medição de aprendizagem é
+interpretável.
