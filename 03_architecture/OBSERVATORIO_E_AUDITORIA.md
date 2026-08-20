@@ -947,3 +947,71 @@ gate produzia falso positivo e falso negativo ao mesmo tempo.
 Era o portão que separava o projeto de conseguir medir. Com o gabarito distribuído,
 acerto volta a significar matemática, misconception volta a significar concepção
 errada, e **linha de base, telemetria e piloto passam a ser interpretáveis**.
+
+## CLASS-007 — varredura estática de uma sub-forma, e o limite dela
+
+Lote 9 (GE) parou corretamente por condição D069 ao encontrar a CLASS-007:
+*a ação conceitual está presente e executável, mas não participa da condição que
+compra evidência; a criança pode ignorá-la e concluir a questão.*
+
+A sessão de produção **recusou-se a extrapolar prevalência** sem varredura global,
+citando R1/R2. A recusa está certa. Esta seção faz a varredura possível.
+
+### A assinatura, achada no testemunho mais claro
+
+`PoligonosStage.tsx`, o GAP-048:
+
+```tsx
+<DragGroup
+  tutorialText="Arraste ou toque na peça e depois no grupo."
+  disabled={disabled}          // habilitado durante a questão
+  onAnswer={() => undefined}   // callback morto
+/>
+```
+
+A criança é instruída a arrastar, arrasta, e nada acontece. A resposta que vale é um
+botão separado.
+
+Assinatura estática: **primitiva interativa habilitada + callback no-op**. O
+`disabled` literal não conta — grid de exibição pura é legítimo e comum.
+
+### Resultado da varredura em `src/components`
+
+| | |
+|---|---|
+| callbacks no-op encontrados | 11 |
+| com `disabled` literal — exibição legítima | 8 |
+| **suspeitos** | **3** |
+
+| Suspeito | Competência | Veredito |
+|---|---|---|
+| `PoligonosStage` / `DragGroup` | GE.07 | confirmado — é o GAP-048 |
+| `FatoresRetangulosStage` / `ArrayGrid` | **N2.07** | **candidato novo, fora do domínio GE** |
+| `GameLoopExerciseRenderer` / `JourneyScene` | — | benigno: `onDone` de cena, não é affordance de resposta |
+
+`FatoresRetangulosStage` declara em comentário que o `ArrayGrid` é *"superfície
+física"* e que o palco só coordena — mas ele fica habilitado com callback morto,
+enquanto o palco dá retorno de "sobrou" e "retângulo completo". Merece o mesmo
+tratamento do GE.07: ou o toque alimenta a resposta, ou a superfície deixa de
+parecer avaliativa.
+
+O achado importa por vir de **N2**, domínio já auditado no Lote 2. É R2 funcionando:
+a classe descoberta em GE tem testemunha em domínio fechado.
+
+### O limite, declarado
+
+Esta varredura cobre **uma sub-forma** da CLASS-007 — a do callback morto. A classe
+também abrange *ação executável que não condiciona mastery*, como o experimento de
+GE.04 e a transformação de GE.09, que não têm assinatura estática: a ação funciona,
+o estado existe, e simplesmente não entra na regra de domínio.
+
+Essa segunda sub-forma exige comparar, por competência, **o que a ficha declara como
+ação probatória** contra **o que a regra de mastery efetivamente exige**. É trabalho
+de leitura de contrato, não de varredura.
+
+Portanto **a CLASS-007 continua ABERTA e não dimensionada globalmente.** O que esta
+seção acrescenta é: a sub-forma de callback morto está fechada em 3 suspeitos, dos
+quais 1 é novo e vem de fora do domínio auditado, e a outra sub-forma tem método
+definido mas não executado.
+
+Sujeito a D067.

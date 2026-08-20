@@ -395,3 +395,26 @@ com três defeitos, todos visíveis ao rodá-lo e nenhum ao lê-lo.
 Operação muda de parada por domínio para parada por condição, com checklist de
 autoverificação cujo item central é medir a alegação principal do lote. Governança
 segue inegociável.
+
+### Gate B · Lote 9 (GE) verificado — CLASS-007 varrida em parte — 19/08/2026
+Lote correto: HEAD `173af74`, 1 commit, 1 arquivo, +217, `main` intocada. **A parada
+foi por condição D069, não por domínio** — o protocolo funcionou na primeira vez em
+que foi usado.
+
+A sessão de produção recusou-se a extrapolar prevalência da CLASS-007 sem varredura
+global, citando R1/R2. A recusa está certa.
+
+**Varredura da sub-forma de callback morto**, feita aqui: assinatura é primitiva
+habilitada com callback no-op, descontando `disabled` literal, que é exibição
+legítima. De 11 no-op encontrados, 8 são exibição e **3 são suspeitos**:
+`GE.07/PoligonosStage/DragGroup` (é o GAP-048, confirma o método),
+**`N2.07/FatoresRetangulosStage/ArrayGrid` — novo e fora do domínio GE**, e
+`JourneyScene/onDone`, benigno por não ser affordance de resposta.
+
+O testemunho de N2.07 vem de domínio já auditado no Lote 2. É R2 funcionando.
+
+**Limite declarado:** a CLASS-007 tem uma segunda sub-forma — ação executável que
+não condiciona mastery, como o experimento de GE.04 e a transformação de GE.09 — que
+não tem assinatura estática. Exige comparar, por competência, a ação probatória
+declarada na ficha contra a regra de mastery efetiva. Método definido, não executado.
+A classe permanece ABERTA e não dimensionada.

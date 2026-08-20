@@ -124,7 +124,33 @@ production:
       sha: f1f61ea3a87633ad227060957cf2523b2e5fc05a
       individuais: 4
     progresso: "64 de 90 auditadas; faltam GE GM PE"
-    proximo_lote: GE
+    lote_9:
+      dominio: GE
+      competencias: 10
+      sha: 173af7445613043b45536be4f57df1d7c460ceaf
+      individuais: 6
+      parou_por: condicao_D069_classe_nova
+    progresso: "74 de 90 auditadas; faltam GM (12) e PE (4)"
+    proximo_lote: GM
+    class_007:
+      status: ABERTA_nao_dimensionada
+      definicao: >
+        Acao conceitual presente e executavel, mas que nao participa da condicao
+        que compra evidencia. A crianca pode ignora-la e concluir a questao.
+      subforma_callback_morto:
+        varrida_por: esta_sessao
+        assinatura: "primitiva habilitada + callback no-op; disabled literal nao conta"
+        no_op_encontrados: 11
+        exibicao_legitima: 8
+        suspeitos: 3
+        confirmado: "GE.07 PoligonosStage/DragGroup — GAP-048"
+        novo_fora_do_dominio: "N2.07 FatoresRetangulosStage/ArrayGrid"
+        benigno: "JourneyScene onDone — nao e affordance de resposta"
+      subforma_mastery_nao_condicionada:
+        exemplos: [GE.04 experimento, GE.09 transformacao]
+        assinatura_estatica: inexistente
+        metodo: comparar acao probatoria da ficha contra a regra de mastery efetiva
+        executada: false
     class_006_NAO_fechada:
       medido_por: esta_sessao
       head: f1f61ea
