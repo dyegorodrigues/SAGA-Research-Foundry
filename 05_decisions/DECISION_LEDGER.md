@@ -69,6 +69,8 @@
 | D065 | Naming diferido; SAGA permanece codinome interno | DEFER |
 | D066 | `MANIFEST.sha256.json` é snapshot histórico, não gate; vermelho intencional não se conserta | KEEP |
 | D067 | Issue #47 é autoridade do pós-90/90; Observatório é subordinado, não fila paralela | KEEP |
+| D068 | Portão de invariante não usa lista de inclusão manual; usa descoberta ou medição | KEEP |
+| D069 | Parada por condição, não por domínio, com autoverificação obrigatória | EXPERIMENT |
 
 ## Reconciliação D057–D065
 
@@ -205,3 +207,36 @@ e observabilidade; nenhuma dessas responde se a criança aprendeu.
 Restrição temporal registrada: a linha de base é recurso não renovável e precisa ser
 coletada **antes** do piloto do Gate J. Depois do primeiro uso sério ela é
 irrecuperável e o ganho deixa de ser interpretável.
+
+### D068 · Lista de inclusão manual não sustenta invariante
+
+Três ocorrências do mesmo modo de falha: cânone nominal por lista na W36,
+catraca documental com seis caminhos escritos à mão e allowlist de vinte e cinco
+ids na CLASS-006. Duas delas foram criadas para impedir a falha anterior.
+
+Vigente: portão de invariante estrutural usa **descoberta** ou **medição**. Lista,
+quando existir, é de **exceção** — explícita, justificada, e que não dispensa a
+medição. A assimetria é o ponto: esquecer de incluir abre buraco silencioso;
+esquecer de excluir produz teste vermelho.
+
+Corolário registrado em R4 do protocolo: o portão também é código e também erra.
+O gate da CLASS-006 nasceu com três defeitos, todos visíveis ao rodá-lo e nenhum
+ao lê-lo.
+
+### D069 · Parada por condição, não por domínio
+
+`PARE ao terminar o domínio` protegia quando o método era novo. Depois de oito
+lotes com escopo respeitado e governança intacta, passou a custar uma rodada por
+domínio sem reduzir risco.
+
+Vigente: a sessão segue pelos domínios restantes e para por **condição** — classe
+estrutural nova, gate vermelho fora do escopo `AUDIT-ONLY`, achado transversal que
+exija correção, divergência que peça julgamento humano, escopo de diff fora do
+autorizado, ou qualquer toque em `main`, PR ou governança.
+
+Acompanha autoverificação obrigatória antes de reportar, cujo item central é
+**medir a alegação principal do lote**. Os outros itens a sessão já fazia; foi a
+ausência da medição que produziu quase todos os achados externos.
+
+`EXPERIMENT` e não `KEEP`: se um lote fechar com achado que a autoverificação
+deveria ter pego, a parada por domínio volta.

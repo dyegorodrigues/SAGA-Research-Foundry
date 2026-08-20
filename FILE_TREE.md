@@ -2,6 +2,7 @@
 
 - `.gitignore`
 - `00_governance/REPOSITORY_BOUNDARIES.md`
+- `00_governance/PROTOCOLO_DE_AUTOSSUFICIENCIA.md`
 - `00_governance/SOURCE_OF_TRUTH.md`
 - `00_governance/WORKFLOW.md`
 - `01_vision/NORTH_STAR.md`

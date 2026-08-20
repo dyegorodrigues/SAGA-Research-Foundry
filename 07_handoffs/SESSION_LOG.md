@@ -372,3 +372,26 @@ concentração, e `AL.02` — última suspeita — medida com 3.000 amostras por
 
 Com isso, acerto volta a significar matemática e misconception volta a significar
 concepção errada. Linha de base, telemetria e piloto passam a ser interpretáveis.
+
+### Protocolo de autossuficiência — 19/08/2026
+Verificado o HEAD `1088aed`: escopo nos três arquivos autorizados, `main` intocada,
+`tsc` limpo, **248 arquivos / 3.437 testes**. A correção de shape foi conferida
+independentemente — **171 pares com `uiProps.opcoes`, zero alternativa sem
+identidade**. A regressão da Sonda F30 era real e a sessão de produção a tratou
+corretamente, sem esconder com rerun. Ela pegou algo que a verificação externa não
+tinha pego.
+
+Escrito `00_governance/PROTOCOLO_DE_AUTOSSUFICIENCIA.md` e registradas D068 e D069.
+
+Diagnóstico do ping-pong: o gargalo não é competência da sessão de produção. São
+três lacunas de protocolo — a regra de parada por domínio virou freio permanente
+depois de oito lotes bem executados; falta autoverificação por **medição** antes de
+reportar; e o padrão de lista de inclusão manual se repetiu três vezes.
+
+Quatro regras: medir e não ler; varrer as 90 e não só o domínio do lote; lista de
+inclusão é suspeita; e o gate também é código e também erra — o da CLASS-006 nasceu
+com três defeitos, todos visíveis ao rodá-lo e nenhum ao lê-lo.
+
+Operação muda de parada por domínio para parada por condição, com checklist de
+autoverificação cujo item central é medir a alegação principal do lote. Governança
+segue inegociável.
