@@ -279,3 +279,22 @@ cânone não se comprime. O CI verde é legítimo e simplesmente não cobre come
 
 Recomendação: bloquear o Lote 8 até refazer o reparo como diff cirúrgico a partir de
 `66b40d0`, e criar portão que observe queda de densidade de documentação em runtime.
+
+### Restauração documental EXECUTADA — 19/08/2026
+A sessão de produção não conseguiu concluir. Esta sessão executou.
+
+Refeito o reparo CLASS-005/006 como diff cirúrgico a partir de `66b40d0`. Commit
+`658011a` na branch `claude/saga-empresa-educacional-visao-ty4jpy` do SAGA, em
+fast-forward sobre `799b3a4`. `codex/fechamento-curricular` e `main` intocadas.
+
+Verificado com dependências reais instaladas: `tsc --noEmit` limpo, `npm run build`
+verde incluindo `grafo:check`, **247 arquivos de teste e 3.459 testes passando**,
+Coverage Matrix observada `75/15/0/90/11` com 94 fichas e `Moedas` ausente.
+Comentários de volta em 152 e 89, `sort` aleatório em 0, guards do Composer intactos.
+
+Diff contra `66b40d0`: **33 inserções / 50 deleções** nos dois arquivos, contra 946
+deleções só no Composer no caminho anterior.
+
+Causa raiz registrada: o agente regenera arquivos em vez de aplicar patch; comentário
+não é testado; nenhum portão observa densidade documental. Só o terceiro item é
+acionável por gate, e é o que falta.

@@ -135,7 +135,17 @@ production:
         guards_semanticos: preservados
         ci_verde: legitimo_mas_nao_cobre_comentario
         reincidencia: "mesma falha da W36 com ficha_runtime_map.cjs"
-        recuperacao: refazer_como_diff_cirurgico_a_partir_de_66b40d0
+        recuperacao: EXECUTADA_POR_ESTA_SESSAO
+        restauracao:
+          repo: dyegorodrigues/SAGA
+          branch: claude/saga-empresa-educacional-visao-ty4jpy
+          commit: 658011a
+          base: 799b3a4 (fast-forward)
+          linha_viva_tocada: false
+          main_tocada: false
+          verificacao: "tsc limpo; build verde; 247 arquivos e 3459 testes passando; Matrix 75/15/0/90/11"
+          diff_contra_66b40d0: "33 insercoes / 50 delecoes nos dois arquivos"
+          pendente: catraca_de_densidade_documental
     class_006_estendida_por_esta_sessao:
       escopo_real: "26 de 39 contratos especializados, nao apenas N7"
       cadeia_verificada: >

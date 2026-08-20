@@ -666,3 +666,78 @@ sensíveis, no espírito da catraca de `coresLiterais.test.ts` — o teto só de
 quando alguém registra explicitamente a melhora.
 
 Sujeito a D067.
+
+## Restauração executada — e a causa raiz da reincidência
+
+Executada e verificada nesta sessão, 19/08/2026. Empurrada para
+`dyegorodrigues/SAGA`, branch `claude/saga-empresa-educacional-visao-ty4jpy`,
+commit `658011a`, em fast-forward sobre `799b3a4`. `codex/fechamento-curricular`
+e `main` não foram tocadas.
+
+### O que foi feito
+
+Refazer o reparo CLASS-005/006 como diff cirúrgico a partir de `66b40d0`, em vez de
+sobre o arquivo já comprimido. Método: transformação mecânica dos 18 sites do
+Composer e dos 3 pontos do GameLoop, com o arquivo documentado como base.
+
+Regras aplicadas:
+
+- `X.sort(() => Math.random() - 0.5)` → `fisherYates(X)`;
+- `options.sort(…);` como statement → `options = fisherYates(options);`, porque
+  `fisherYates` não muta e `.sort` mutava;
+- remoção do `shuffle` local do GameLoop, agora importado do utilitário.
+
+### Verificação com dependências reais
+
+| Verificação | Resultado |
+|---|---|
+| `tsc --noEmit` | limpo |
+| `npm run build` (inclui `grafo:check`) | verde |
+| Suíte | **247 arquivos / 3.459 testes, todos passando** |
+| Coverage Matrix observada | `75/15/0/90/11`, 94 fichas, `Moedas` ausente |
+| Comentários | `Composer` 152 · `GameLoop` 89 — restaurados |
+| `sort` com comparador aleatório | 0 |
+| Guards do Composer | `Intervalo vertical`, `exigir e proibir`, `Reagrupamento duplo`, `operand_step` — intactos |
+
+Preservado do reparo original: `src/utils/shuffle.ts`, política dos 25 IDs em
+`composerCanary.ts`, `class005006ShufflePolicy.test.ts` e as demais substituições.
+Nada revertido.
+
+### A medida que prova o método
+
+| Diff contra `66b40d0` | Inserções | Deleções |
+|---|---|---|
+| caminho anterior, só `Composer.ts` | 184 | **946** |
+| esta restauração, os dois arquivos | 33 | 50 |
+
+### Causa raiz — por que isto se repete
+
+Não é descuido pontual. Aconteceu na W36 com `ficha_runtime_map.cjs` e de novo
+agora, com dois arquivos maiores. O padrão:
+
+1. **O agente regenera o arquivo em vez de aplicar patch.** Pedido para mudar 18
+   linhas, ele reescreve 1.245. A saída fica funcionalmente equivalente porque os
+   testes cobrem comportamento.
+2. **Comentário não é testado.** É a primeira coisa a cair numa regeneração, e
+   nenhuma suíte reclama.
+3. **Nenhum portão observa densidade documental.** O CI fica verde de forma
+   legítima, o recibo é real, e a perda só aparece se alguém comparar à mão.
+4. **O rationale perdido é justamente o que impede regressão futura** — regra de
+   precedência de tags, motivo de um valor estar num arquivo e não em outro. Perder
+   isso não quebra hoje; quebra na próxima sessão que reordenar por elegância.
+
+O ponto 3 é o único acionável por gate, e é o que falta.
+
+### O portão que fecha a classe
+
+Catraca de densidade documental, no espírito de `coresLiterais.test.ts`: para
+arquivos de runtime declarados sensíveis, a contagem de linhas de comentário tem
+piso registrado e **o piso só sobe**. Queda reprova nomeando arquivo, contagem
+anterior e atual.
+
+Lista mínima: `Composer.ts`, `GameLoop.tsx`, `ficha_runtime_map.cjs`,
+`coverage_matrix_core.ts`, catálogos de misconceptions e o arquivo que hoje é
+autoridade de evidências — cujo caminho precisa ser resolvido no tree, porque
+`evidencias.ts` não existe nos caminhos óbvios.
+
+Sem esse portão, a próxima regeneração repete tudo. Sujeito a D067.
