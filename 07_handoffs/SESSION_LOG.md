@@ -418,3 +418,24 @@ não condiciona mastery, como o experimento de GE.04 e a transformação de GE.0
 não tem assinatura estática. Exige comparar, por competência, a ação probatória
 declarada na ficha contra a regra de mastery efetiva. Método definido, não executado.
 A classe permanece ABERTA e não dimensionada.
+
+### CLASS-007 dimensionada e CLASS-008 proposta — 19/08/2026
+CLASS-007 verificada: `41d4233`, 1 arquivo, +285, `main` intocada, prevalência
+**7/90**. Confirmei a alegação mais específica na fonte — em `medidasProcedure.ts`,
+`acertou()` não consulta `verificou`; ele só aparece em `diagnosticar()`, **depois**
+do erro, para rotular a misconception, e `evidenciasDe()` concede
+`CASO_CONTRAINTUITIVO` sem consultá-lo. GM.12 é testemunha legítima. A testemunha
+N2.07 que levantei foi confirmada.
+
+**Respondida a pergunta que travou o lote GM.** Varredura R2: o padrão de GM.02 é
+**classe**, não candidata isolada. Quatro testemunhas em quatro domínios — `N1.09`
+(GAP-008), `GM.02`, e duas **novas em lotes já fechados**: `N3.09` (Lote 3) e
+`N4.07` (Lote 4). Todas com `dominio: { acertos: 4, de: 5, sessoes: 2 }`, cego a
+família, e nenhuma com `evidenciasDistintas`.
+
+O mecanismo de correção **já existe**: `schema.evidenciasDistintas` — "pelo menos N
+evidências distintas com este prefixo" — em uso por 3 fichas de 78 (`AL.03`, `AL.04`,
+`AL.05`). O problema é aplicação, não ausência de mecanismo.
+
+Escopo honesto: busca textual por linguagem de mistura; é cota inferior, e confirmação
+por leitura de contrato continua necessária.

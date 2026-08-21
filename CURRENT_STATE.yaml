@@ -131,6 +131,28 @@ production:
       individuais: 6
       parou_por: condicao_D069_classe_nova
     progresso: "74 de 90 auditadas; faltam GM (12) e PE (4)"
+    class_007_dimensionada:
+      sha: 41d4233d7b5e06639b0e626684f695708d581966
+      prevalencia: "7 de 90 = 7,78%"
+      testemunhas: [N2.07, N4.02, GE.04, GE.07, GE.09, GM.11, GM.12]
+      verificado_por_esta_sessao: >
+        GM.12 conferido na fonte: acertou() nao consulta verificou; ele so aparece em
+        diagnosticar(), depois do erro, para rotular misconception. evidenciasDe()
+        concede CASO_CONTRAINTUITIVO sem verificou. Alegacao precisa.
+    class_008_proposta:
+      pergunta_que_travou_o_lote_gm: "GM.02 e candidata isolada ou classe?"
+      resposta: classe
+      assinatura: >
+        Nivel que mistura familias e sorteia entre elas, com dominio de acertos/de/sessoes
+        cego a familia. Coroa sem cobrir as familias que o nivel existe para integrar.
+      testemunhas:
+        N1.09: "misto — conhecida, GAP-008"
+        GM.02: "misto — reportada pela sessao de producao"
+        N3.09: "misto operation mixed — NOVA, Lote 3 fechado"
+        N4.07: "dificeis, escolher entre as quatro — NOVA, Lote 4 fechado"
+      mecanismo_de_correcao_ja_existe: "schema.evidenciasDistintas, em uso por 3 de 78 fichas"
+      precedente_interno: [AL.03, AL.04, AL.05]
+      escopo: cota_inferior_por_busca_textual
     proximo_lote: GM
     class_007:
       status: ABERTA_nao_dimensionada

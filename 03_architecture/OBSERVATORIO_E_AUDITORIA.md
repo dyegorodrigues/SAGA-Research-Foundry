@@ -1015,3 +1015,67 @@ quais 1 é novo e vem de fora do domínio auditado, e a outra sub-forma tem mét
 definido mas não executado.
 
 Sujeito a D067.
+
+## CLASS-008 proposta — nível misto concede mastery sem cobrir as famílias que mistura
+
+Varredura R2 executada nesta sessão para decidir a pergunta que travou o lote GM:
+o achado de GM.02 é candidata isolada ou classe?
+
+**É classe.** Quatro testemunhas, quatro domínios, duas em lotes já fechados.
+
+### A assinatura
+
+Um nível — tipicamente o L5 — declara um micro que **mistura famílias** e sorteia
+entre elas, enquanto a regra de domínio é `{ acertos: 4, de: 5, sessoes: 2 }`, uma
+contagem **cega a família**. A criança pode ser coroada tendo demonstrado uma só das
+famílias que o nível existe para integrar.
+
+### As testemunhas
+
+| Competência | Micro | Domínio | Status |
+|---|---|---|---|
+| `N1.09` | `misto` | N1 · Lote 1 | conhecida — é o GAP-008 |
+| `GM.02` | `misto` | GM · não auditado | reportada pela sessão de produção |
+| **`N3.09`** | `misto`, `operation: "mixed"` — alterna soma e subtração | N3 · **Lote 3 fechado** | **nova** |
+| **`N4.07`** | `dificeis`, alvo *"escolher a estratégia certa entre as quatro, sem apoio"* | N4 · **Lote 4 fechado** | **nova** |
+
+Todas as quatro declaram `dominio: { acertos: 4, de: 5, sessoes: 2 }` e **nenhuma**
+declara `evidenciasDistintas`.
+
+Descartados por ruído de busca: `GE.06`, `N3.10` e `PE.04` casaram em prosa;
+`N7.01` e `N7.02` usam "mistos" para positivos e negativos, que é conceito único e
+não mistura de famílias.
+
+### O mecanismo de correção já existe
+
+`src/curriculum/schema.ts` declara:
+
+```ts
+evidenciasDistintas?: { prefixo: string; minimo: number; descricao?: string };
+```
+
+É exatamente "pelo menos N evidências distintas com este prefixo". Está em uso por
+**3 fichas de 78** — `AL.03` com mínimo 2, `AL.04` com 1 e `AL.05` com 2.
+
+Ou seja: o problema não é falta de mecanismo, é falta de aplicação onde o nível
+mistura famílias. Há precedente interno funcionando.
+
+### Por que isso importa mais do que parece
+
+É a mesma família de dano da CLASS-006, por outro caminho. Lá, a criança podia ser
+coroada sem fazer matemática porque a posição entregava a resposta. Aqui, ela pode
+ser coroada **tendo demonstrado um quarto do que a competência afirma provar** — e o
+nível misto existe precisamente para provar integração entre famílias.
+
+O `Progress` já carrega `evidenciasVistas`, descrito como *"as condições já
+observadas em acertos desta competência; histórico, não streak"*. A infraestrutura
+de cobertura existe; a regra de domínio simplesmente não a consulta nesses casos.
+
+### Escopo honesto
+
+A busca cobriu as 78 fichas autorais por linguagem de mistura/sorteio entre famílias.
+Fichas que misturem famílias **sem** usar essa linguagem não seriam encontradas por
+este método — a varredura é uma cota inferior, e a confirmação por leitura de
+contrato continua necessária antes de fechar a classe.
+
+Sujeito a D067 — proposta, sem autoridade sobre a Issue #47.
