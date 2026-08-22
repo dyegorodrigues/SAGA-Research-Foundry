@@ -439,3 +439,47 @@ evidências distintas com este prefixo" — em uso por 3 fichas de 78 (`AL.03`, 
 
 Escopo honesto: busca textual por linguagem de mistura; é cota inferior, e confirmação
 por leitura de contrato continua necessária.
+
+### Auditoria da execução autônoma — 22/08/2026
+O usuário perdeu o rastro do que a sessão de produção fez enquanto rodava sozinha.
+Reconstruído por Git. **Sete commits desde `41d4233`, nenhum problema material.**
+
+**Gate B FECHOU.** `c710719` é puramente aditivo — 460 inserções, zero deleções —
+e contém os lotes GM e PE, a CLASS-008 e o fechamento 90/90. Acumulado oficial:
+54 candidatas (49 CODIGO / 1 SIMULACAO / 4 CRIANCA) e 8 classes estruturais.
+
+**A compactação NÃO é o padrão da W36.** `75445ec` removeu 727 linhas das duas
+portas vivas — `PROMPT_DE_RETOMADA` de 444 para 156, `ROADMAP` de 328 para 147.
+Verificado: **todas as regras vinculantes sobreviveram** (não tocar main,
+reancoragem, mesmo SHA, draft, auto-merge, Creature) e os recibos do Gate A
+(`efd270b`, `dc6c21c`) estão presentes **nos dois** arquivos. Zero arquivos
+apagados, 15 relatórios GATE_B intactos. Porta viva **deve** ser curta por doutrina
+do projeto; o que saiu foi narrativa redundante.
+
+**Gate B′ foi aberto sob autorização ambígua** — o checkpoint declara honestamente
+que a base é "a instrução humana posterior autorizou continuar autonomamente". As
+regras que ele escreveu para o B′ **incorporam D068** ("nunca allowlist positiva
+manual") e a rota SIMULACAO→Gate G / CRIANCA→Gate J. O protocolo propagou.
+
+**GAP-054 / GM.06 reparado corretamente.** Quatro vazamentos reais: o enunciado
+dizia a resposta (`"O ponteiro grande marca {minutos} minutos"`), o cabeçalho
+mostrava `HH:MM` numa tarefa de ler ponteiro, a `NumberLine` tinha
+`targetValue={spec.resposta}` com faixa destacada e `max` igual à resposta, e o
+andaime imprimia a soma resolvida. O andaime pedagógico legítimo ficou.
+
+Verificado aqui: `tsc` limpo, **249 arquivos / 3.440 testes**; mutação revertendo o
+palco reprova em dois vazamentos e restaurar aprova; **CI #1555 e Transversal #291
+fecharam success** no `a47b738` — os recibos que ele deixou pendentes estão verdes.
+
+### Buraco meu, tapado
+A catraca documental que instalei cobre `src` e `AI_Studio_Lab/tools`, e **não
+alcança `AI_Studio_Lab/codex/`** — por isso não observou a compactação. Medido:
+**83 documentos históricos, 16.819 linhas de recibo, sem portão**.
+
+Distinção que a correção respeita: porta viva pode encolher; recibo histórico não.
+Checkpoint, relatório de lote, auditoria, errata e decisão registram SHA, run de CI
+e cadeia causal, e nada os regenera.
+
+`src/governance/recibosHistoricos.test.ts` + baseline, commit `491d74e`. Três
+invariantes verificados por mutação: sem piso reprova, desaparecimento reprova,
+compressão reprova. `tsc` limpo, 250 arquivos e 3.443 testes.
